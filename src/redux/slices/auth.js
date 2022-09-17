@@ -5,7 +5,14 @@ export const authSlice = createSlice({
   initialState: null,
   reducers: {
     Login: (state, action) => {
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      const UserData = {
+        id: action.payload.user.id,
+        first_name: action.payload.user.first_name,
+        last_name: action.payload.user.last_name,
+        role: action.payload.user.role,
+        jwt: action.payload.jwt,
+      };
+      localStorage.setItem('user', JSON.stringify(UserData));
     },
     isLoggedIn: () => {
       const user = JSON.parse(localStorage.getItem('user'));
