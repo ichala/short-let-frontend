@@ -1,11 +1,14 @@
 import Sidebar from '../components/SideBar';
+import Styles from './layout.module.css';
 
 function Layout({ children }) {
   return (
-    <div>
-      <Sidebar />
-      <main>{children}</main>
-    </div>
+    <>
+      <div className={Styles.main_container}>
+        <Sidebar />
+        <main className="container-fluid">{children}</main>
+      </div>
+    </>
   );
 }
 
