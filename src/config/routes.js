@@ -21,7 +21,7 @@ const routesConfig = [
     element: <PrivateRoutes />, // <-- check if user authenticated
     children: [
       {
-        path: 'profile',
+        path: '/profile',
         element: <Profile />,
       },
     ],
