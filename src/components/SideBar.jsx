@@ -41,7 +41,7 @@ const Sidebar = () => {
 
       <div className="d-flex border-end flex-column flex-shrink-0 p-3 d-md-block d-none shadow-sm  rounded sidebar" style={{ width: '280px' }}>
         <a href="sqs" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img src="/images/logo.png" style={{ width: '240px', height: '170px' }} alt="" srcSet="" />
+          <img src="/images/logo.png" className={Styles.logo} alt="logo" />
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
