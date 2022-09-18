@@ -33,6 +33,13 @@ const menuItem = [
     end: false,
     protected: true,
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    icon: <FaSignInAlt />,
+    end: false,
+    protected: true,
+  },
 ];
 
 export default menuItem;
