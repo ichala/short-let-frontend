@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
