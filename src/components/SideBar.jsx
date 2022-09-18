@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({ children }) => {
+const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -44,6 +44,7 @@ const Sidebar = ({ children }) => {
             key={index}
             className="link text-decoration-none"
             activeClassName="active"
+            exact="true"
           >
             <div className="icon">{item.icon}</div>
             <div
@@ -55,7 +56,6 @@ const Sidebar = ({ children }) => {
           </NavLink>
         ))}
       </div>
-      <main>{children}</main>
     </div>
   );
 };
