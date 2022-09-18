@@ -2,6 +2,7 @@ import {
   FaTh,
   FaUserAlt,
   FaSignInAlt,
+  FaUser,
 } from 'react-icons/fa';
 
 const menuItem = [
@@ -27,19 +28,20 @@ const menuItem = [
     protected: false,
   },
   {
+    path: '/profile',
+    name: 'Profile',
+    icon: <FaUser />,
+    end: false,
+    protected: true,
+  },
+  {
     path: '/logout',
     name: 'logout',
     icon: <FaSignInAlt />,
     end: false,
     protected: true,
   },
-  {
-    path: '/profile',
-    name: 'Profile',
-    icon: <FaSignInAlt />,
-    end: false,
-    protected: true,
-  },
+
 ];
 
 export default menuItem;
