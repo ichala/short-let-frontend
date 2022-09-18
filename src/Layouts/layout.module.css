@@ -1,4 +1,8 @@
-.main_container {
-  display: flex;
-  min-height: 100vh;
+
+@media screen and (min-width: 768px) {
+  .main_container {
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
 }

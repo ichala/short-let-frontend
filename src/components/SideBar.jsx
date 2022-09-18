@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import {
   FaTh,
-  FaBars,
   FaUserAlt,
   FaSignInAlt,
 } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
       path: '/',
@@ -31,35 +30,66 @@ const Sidebar = () => {
     },
   ];
   return (
+    <>
+      <div className="collapse d-md-none" id="navbarToggleExternalContent">
+        <div className="bg-light p-2">
+          <ul className="nav nav-pills flex-column mb-auto">
 
-    <div style={{ width: isOpen ? '200px' : '50px' }} className="sidebar">
-      <div className="top_section">
-        <h1 style={{ display: isOpen ? 'block' : 'none' }} className="logo">
-          Logo
-        </h1>
-        <div style={{ marginLeft: isOpen ? '50px' : '0px' }} className="bars">
-          <FaBars onClick={toggle} />
+            {menuItem.map((item, index) => (
+              <li key={index} className="nav-item text-dark text-decoration-none">
+                <NavLink
+                  to={item.path}
+                  className="nav-link text-decoration-none text-dark d-flex gap-3"
+                  end={item.end}
+                >
+                  <div className="icon">{item.icon}</div>
+                  <div
+                    className="link_text"
+                  >
+                    {item.name}
+                  </div>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      {menuItem.map((item, index) => (
-        <NavLink
-          to={item.path}
-          key={index}
-          className="link text-decoration-none"
-          end={item.end}
-        >
-          <div className="icon">{item.icon}</div>
-          <div
-            style={{ display: isOpen ? 'block' : 'none' }}
-            className="link_text"
-          >
-            {item.name}
-          </div>
-        </NavLink>
-      ))}
-    </div>
+      <nav className="navbar navbar-light bg-light d-md-none">
+        <div className="container-fluid">
+          <button className="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon" />
+          </button>
+        </div>
+      </nav>
 
+      <div className="d-flex border-end flex-column flex-shrink-0 p-3 d-md-block d-none shadow-sm  rounded sidebar" style={{ width: '280px' }}>
+        <a href="sqs" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <img src="/images/logo.png" style={{ width: '240px', height: '170px' }} alt="" srcSet="" />
+        </a>
+        <hr />
+        <ul className="nav nav-pills flex-column mb-auto">
+
+          {menuItem.map((item, index) => (
+            <li key={index} className="nav-item text-dark text-decoration-none">
+              <NavLink
+                to={item.path}
+                className="nav-link text-decoration-none text-dark d-flex gap-3"
+                end={item.end}
+              >
+                <div className="icon">{item.icon}</div>
+                <div
+                  className="link_text"
+                >
+                  {item.name}
+                </div>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+
+    </>
   );
 };
-
 export default Sidebar;
