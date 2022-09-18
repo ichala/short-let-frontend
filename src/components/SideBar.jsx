@@ -1,36 +1,13 @@
 // import React, { useState } from 'react';
-import {
-  FaTh,
-  FaUserAlt,
-  FaSignInAlt,
-} from 'react-icons/fa';
+
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import menuItem from '../config/sidebar';
 import Styles from './sidebar.module.css';
 
 const Sidebar = () => {
-  const menuItem = [
-    {
-      path: '/',
-      name: 'Home',
-      icon: <FaTh />,
-      end: true,
+  const user = useSelector((state) => state.user);
 
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      icon: <FaUserAlt />,
-      end: false,
-      logged_in: false,
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      icon: <FaSignInAlt />,
-      end: false,
-      logged_in: false,
-    },
-  ];
   return (
     <>
       <div className="collapse d-md-none" id="navbarToggleExternalContent">
@@ -38,7 +15,7 @@ const Sidebar = () => {
           <ul className="nav nav-pills flex-column mb-auto">
 
             {menuItem.map((item, index) => (
-              <li key={index} className="nav-item text-dark text-decoration-none">
+              <li key={index} className={`${((user && !item.protected && !(item.name === 'Home')) || (!user && item.protected && !(item.name === 'Home'))) && 'd-none'} nav-item  text-dark text-decoration-none`}>
                 <NavLink
                   to={item.path}
                   className="nav-link text-decoration-none text-dark d-flex gap-3"
@@ -72,7 +49,7 @@ const Sidebar = () => {
         <ul className="nav nav-pills flex-column mb-auto">
 
           {menuItem.map((item, index) => (
-            <li key={index} className="nav-item text-dark text-decoration-none">
+            <li key={index} className={`${((user && !item.protected) || (!user && item.protected)) && !(item.name === 'Home') && 'd-none'} nav-item  text-dark text-decoration-none`}>
               <NavLink
                 to={item.path}
                 className="nav-link text-decoration-none text-dark d-flex gap-3"
