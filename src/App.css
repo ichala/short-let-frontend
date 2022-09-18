@@ -54,13 +54,13 @@ main {
 }
 
 .link:hover {
-  background: #A3E635;
+  background: #a3e635;
   color: #000;
   transition: all 0.5s;
 }
 
 .active {
-  background: #A3E635;
+  background: #a3e635;
   color: #fff;
 }
 
