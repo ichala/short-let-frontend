@@ -6,7 +6,7 @@ function Layout({ children }) {
     <>
       <div className={Styles.main_container}>
         <Sidebar />
-        <main className="container-fluid">{children}</main>
+        <main className={` ${Styles.main_content} container-fluid`}>{children}</main>
       </div>
     </>
   );

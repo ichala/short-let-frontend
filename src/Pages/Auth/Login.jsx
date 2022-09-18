@@ -8,7 +8,7 @@ function Login() {
 
   return (
     <>
-      <button type="button" onClick={() => UserLogin({ email: 'admin@admin.com', password: 'admin123' }, dispatch, navigate)}>LOGIN</button>
+      <button className="btn btn-success" type="button" onClick={() => UserLogin({ email: 'admin@admin.com', password: 'admin123' }, dispatch, navigate)}>LOGIN</button>
     </>
   );
 }

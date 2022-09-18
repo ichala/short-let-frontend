@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { isLoggedIn } from './redux/slices/auth';
 import Login from './Pages/Auth/Login';
@@ -10,6 +10,7 @@ import Layout from './Layouts/Layout';
 
 function App() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(isLoggedIn());
   }, []);
@@ -19,8 +20,12 @@ function App() {
         <Layout>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            {!user && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+            )}
           </Routes>
         </Layout>
       </BrowserRouter>

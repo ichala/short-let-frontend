@@ -5,28 +5,30 @@ import {
   FaSignInAlt,
 } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import Styles from './sidebar.module.css';
 
 const Sidebar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
       path: '/',
       name: 'Home',
       icon: <FaTh />,
       end: true,
+
     },
     {
       path: '/register',
       name: 'Register',
       icon: <FaUserAlt />,
       end: false,
+      logged_in: false,
     },
     {
       path: '/login',
       name: 'Login',
       icon: <FaSignInAlt />,
       end: false,
+      logged_in: false,
     },
   ];
   return (
@@ -42,9 +44,9 @@ const Sidebar = () => {
                   className="nav-link text-decoration-none text-dark d-flex gap-3"
                   end={item.end}
                 >
-                  <div className="icon">{item.icon}</div>
+                  <div className={Styles.icon}>{item.icon}</div>
                   <div
-                    className="link_text"
+                    className={Styles.link_text}
                   >
                     {item.name}
                   </div>
@@ -76,9 +78,9 @@ const Sidebar = () => {
                 className="nav-link text-decoration-none text-dark d-flex gap-3"
                 end={item.end}
               >
-                <div className="icon">{item.icon}</div>
+                <div className={Styles.icon}>{item.icon}</div>
                 <div
-                  className="link_text"
+                  className={Styles.link_text}
                 >
                   {item.name}
                 </div>

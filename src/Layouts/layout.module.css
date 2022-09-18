@@ -6,3 +6,14 @@
     max-height: 100vh;
   }
 }
+
+.main_container {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.main_content {
+  width: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+}
