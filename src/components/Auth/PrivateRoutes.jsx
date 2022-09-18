@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router-dom';
 
-function PrivateRoutes({ children }) {
+function PrivateRoutes() {
   const user = useSelector((state) => state.user);
   if (!user) {
     return (
-      <div>404</div>
+      <Navigate to="/login" replace />
     );
   }
-  return children;
+  return <Outlet />;
 }
 
 export default PrivateRoutes;
