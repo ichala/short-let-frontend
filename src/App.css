@@ -4,3 +4,15 @@
   --text-primary: #252525;
   --text-secondary: #d7d7d7;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* Active Navlink Class */
+.active {
+  background: var(--main) !important;
+  color: var(--secondary) !important;
+}

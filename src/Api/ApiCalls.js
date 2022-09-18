@@ -6,6 +6,6 @@ export default async function UserLogin(data, dispatch, navigate) {
     if (res.status === 200) {
       dispatch(Login(res.data));
       navigate('/');
-    }
+    } /*  eslint-disable-next-line */
   }).catch((e) => console.log(e.response.data.error));
 }
