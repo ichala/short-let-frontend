@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import menuItem from '../config/sidebar';
+import { Logout } from '../redux/slices/auth';
 import Styles from './sidebar.module.css';
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
-
+  const dispatch = useDispatch();
   return (
     <>
       <div className="collapse d-md-none" id="navbarToggleExternalContent">
@@ -62,6 +63,19 @@ const Sidebar = () => {
               </NavLink>
             </li>
           ))}
+          {user && (
+          <li>
+            <button
+              onClick={() => {
+                dispatch(Logout());
+              }}
+              type="button"
+              className="btn btn-danger"
+            >
+              Logout
+            </button>
+          </li>
+          ) }
         </ul>
 
       </div>
