@@ -31,19 +31,27 @@ function Dashboard() {
   }];
   return (
     <>
-      <div className="row m-2  d-flex justify-content-center align-content-center">
-        <div className="btn-group w-50" role="group" aria-label="Basic example">
-          <Link className="btn btn-success" to="/"> Manage Users</Link>
-          <Link className="btn btn-success" to="/"> Manage Reservations</Link>
-          <Link className="btn btn-success" to="/"> Pending Reservations</Link>
-          <Link className="btn btn-success" to="/"> Manage Halls</Link>
+      <div className="row m-1 ">
+        <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
+          <Link type="button" className="btn btn btn-outline-success" to="/"> Manage Users</Link>
         </div>
+        <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
+          <Link type="button" className="btn btn btn-outline-success" to="/"> Manage Reservations</Link>
+        </div>
+        <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
+          <Link type="button" className="btn btn btn-outline-success" to="/"> Pending Reservations</Link>
+        </div>
+        <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
+          <Link type="button" className="btn btn btn-outline-success" to="/"> Manage Halls</Link>
+        </div>
+
       </div>
       <div className="row mt-2">
         {DummyData.map((card) => (
           <StatCard key={card.stat_name} data={card} />
         ))}
       </div>
+
       <div className="row mt-2">
         <ReservationsChart />
         <HallsChart />
