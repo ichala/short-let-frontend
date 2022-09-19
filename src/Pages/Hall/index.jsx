@@ -1,7 +1,15 @@
+import { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import { fetchHalls } from '../../Api/ApiCalls';
 
 const Hall = () => {
-  const m = 'No Hall Found';
+  const [halls, setHalls] = useState([]);
+  useEffect(() => {
+    fetchHalls().then((response) => {
+      setHalls(response);
+    });
+  }, []);
+
   return (
     <div className="p-5">
       <div>
@@ -17,14 +25,33 @@ const Hall = () => {
             <th>Capacity</th>
             <th>Cost</th>
             <th>Description</th>
-            <th>Created By</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr className="text-center">
-            <td colSpan="6">{m}</td>
-          </tr>
+          {halls.map((hall) => (
+            <tr key={hall.name}>
+              <td>{hall.name}</td>
+              <td>{hall.capacity}</td>
+              <td>{hall.cost}</td>
+              <td>{hall.description}</td>
+              <td>
+                <a href="/" className="btn btn-sm btn-info">
+                  Update
+                </a>
+                <a href="/" className="btn btn-sm btn-danger">
+                  Delete
+                </a>
+              </td>
+            </tr>
+          ))}
+          {halls.length === 0 ? (
+            <tr className="text-center">
+              <td colSpan="6">No Hall Found</td>
+            </tr>
+          ) : (
+            ''
+          )}
         </tbody>
       </table>
     </div>
