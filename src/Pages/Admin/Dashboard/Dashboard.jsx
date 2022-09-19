@@ -4,6 +4,7 @@ import {
   FaBuilding, FaClipboardList, FaClock, FaUser,
 } from 'react-icons/fa';
 import StatCard from './Cards/StatCard';
+import HallsCarousel from './Carousel/HallsCarousel';
 import HallsChart from './Charts/HallsChart';
 import ReservationsChart from './Charts/ReservationsChart';
 import ReservationStatsTable from './Tables/ReservationStatsTable';
@@ -41,6 +42,10 @@ function Dashboard() {
       <div className="row mt-2">
         <UserStatsTable />
         <ReservationStatsTable />
+      </div>
+      <div className="row mt-2">
+        <HallsCarousel />
+
       </div>
     </>
   );
