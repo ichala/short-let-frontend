@@ -5,6 +5,7 @@ import { isLoggedIn } from './redux/slices/auth';
 import './App.css';
 import Layout from './Layouts/Layout';
 import routes from './config/routes';
+import Login from './pages/Login';
 
 function App() {
   const dispatch = useDispatch();
