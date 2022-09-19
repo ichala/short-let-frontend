@@ -34,13 +34,6 @@ const menuItem = [
     end: false,
     protected: true,
   },
-  {
-    path: '/logout',
-    name: 'logout',
-    icon: <FaSignInAlt />,
-    end: false,
-    protected: true,
-  },
 
 ];
 
