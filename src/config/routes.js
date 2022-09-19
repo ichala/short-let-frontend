@@ -1,5 +1,6 @@
 import AdminRoutes from '../components/Auth/AdminRoutes';
 import PrivateRoutes from '../components/Auth/PrivateRoutes';
+import Dashboard from '../Pages/Admin/Dashboard/Dashboard';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Home from '../Pages/Home/Home';
@@ -33,7 +34,7 @@ const routesConfig = [
     children: [
       {
         path: '/admin/dashboard',
-        element: <Profile />,
+        element: <Dashboard />,
       },
     ],
   },
