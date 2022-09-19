@@ -1,6 +1,7 @@
 import PrivateRoutes from '../components/Auth/PrivateRoutes';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
+import Hall from '../Pages/Hall';
 import Home from '../Pages/Home/Home';
 import Profile from '../Pages/Users/Profile';
 
@@ -23,6 +24,10 @@ const routesConfig = [
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/halls',
+        element: <Hall />,
       },
     ],
   },
