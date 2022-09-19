@@ -1,3 +1,4 @@
+import AdminRoutes from '../components/Auth/AdminRoutes';
 import PrivateRoutes from '../components/Auth/PrivateRoutes';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
@@ -22,6 +23,16 @@ const routesConfig = [
     children: [
       {
         path: '/profile',
+        element: <Profile />,
+      },
+    ],
+
+  },
+  {
+    element: <AdminRoutes />, // <-- check if user authenticated
+    children: [
+      {
+        path: '/admin/dashboard',
         element: <Profile />,
       },
     ],
