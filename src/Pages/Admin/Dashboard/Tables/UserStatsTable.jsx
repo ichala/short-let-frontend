@@ -1,26 +1,7 @@
 import React from 'react';
 import styles from '../dashboard.module.css';
 
-function UserStatsTable() {
-  const DummyUsers = [{
-    name: 'Ali',
-    last_name: 'Jendoubi',
-    email: 'Ali@dev.to',
-  },
-  {
-    name: 'Eid',
-    last_name: 'Hachem',
-    email: 'Hachem@dev.to',
-  }, {
-    name: 'Aimal',
-    last_name: 'Amiri',
-    email: 'Aimal@dev.to',
-  },
-  {
-    name: 'Lekan',
-    last_name: 'Jimoh',
-    email: 'Lekan@dev.to',
-  }];
+function UserStatsTable({ stats }) {
   return (
     <div className="col-12 col-md-4">
       <div className="card text-center">
@@ -36,7 +17,7 @@ function UserStatsTable() {
               </tr>
             </thead>
             <tbody>
-              {DummyUsers.map((user) => (
+              {stats.map((user) => (
                 <tr key={user.email}>
                   <td>
                     {user.name}
