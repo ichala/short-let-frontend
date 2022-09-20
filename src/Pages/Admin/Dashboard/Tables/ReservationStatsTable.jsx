@@ -19,8 +19,8 @@ function ReservationStatsTable({ stats }) {
               </tr>
             </thead>
             <tbody>
-              {stats.map((user) => (
-                <tr key={user.id}>
+              {stats.map((user, i) => (
+                <tr key={i}>
                   <td>{user.user_name}</td>
                   <td>{user.hall_name}</td>
                   <td>{user.date}</td>
