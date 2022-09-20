@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { addHall } from '../../Api/ApiCalls';
+import { addHall } from '../../Api/halls/api';
 import Modal from '../../components/Modal';
 
 const Create = ({ setChanged }) => {

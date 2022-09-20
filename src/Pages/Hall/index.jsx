@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchHalls, removeHall } from '../../Api/ApiCalls';
+import { fetchHalls, removeHall } from '../../Api/halls/api';
 import Create from './create';
 import Update from './update';
 

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
-import { updateHall, editHall } from '../../Api/ApiCalls';
+import { updateHall, editHall } from '../../Api/halls/api';
 import Modal from '../../components/Modal';
 
 const Update = ({ id, setChanged }) => {
