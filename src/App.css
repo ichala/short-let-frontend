@@ -3,12 +3,17 @@
   --secondary: white;
   --text-primary: #252525;
   --text-secondary: #d7d7d7;
+  --bg: #f4f6f9;
 }
 
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+body {
+  background: var(--bg);
 }
 
 /* Active Navlink Class */
