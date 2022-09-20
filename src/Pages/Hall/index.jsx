@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchHalls } from '../../Api/ApiCalls';
+import { editHall, fetchHalls } from '../../Api/ApiCalls';
 import Create from './create';
 
 const Hall = () => {
@@ -15,6 +15,11 @@ const Hall = () => {
       setHalls(response);
     });
   }, [created]);
+
+  const getHall = (id) => {
+    alert(id);
+    editHall(id);
+  };
 
   return (
     <div className="p-5">
@@ -37,9 +42,9 @@ const Hall = () => {
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
               <td>
-                <a href="/" className="btn btn-sm btn-info">
+                <button type="button" className="btn btn-sm btn-info" onClick={() => getHall(hall.id)}>
                   Update
-                </a>
+                </button>
                 <a href="/" className="btn btn-sm btn-danger">
                   Delete
                 </a>

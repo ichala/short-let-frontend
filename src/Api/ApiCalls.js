@@ -37,3 +37,16 @@ export const addHall = async (data, setClose) => {
     })
     .catch((e) => console.log(e.response.data));
 };
+
+export const editHall = async (id) => {
+  let hall = null;
+  await axios
+    .get(`/admin/halls/${id}`)
+    .then((response) => {
+      if (response.status === 200) {
+        hall = response.data;
+      }
+    })
+    .catch((e) => console.log(e.response.data));
+  return hall;
+};
