@@ -20,7 +20,7 @@ ChartJS.register(
   Legend,
 );
 
-function HallsChart() {
+function HallsChart({ stats }) {
   const options = {
     responsive: true,
     plugins: {
@@ -31,7 +31,7 @@ function HallsChart() {
     },
   };
 
-  const labels = ['Halls 1', 'Halls 2', 'Halls 3', 'Halls 4', 'Halls 5'];
+  const { labels } = stats;
 
   const data = {
 
@@ -39,17 +39,17 @@ function HallsChart() {
     datasets: [
       {
         label: 'total',
-        data: [250, 156, 300, 232, 100],
+        data: stats.data.total,
         backgroundColor: 'rgba(63, 175, 78, 0.3)',
       },
       {
         label: 'Pending',
-        data: [100, 70, 90, 25, 50],
+        data: stats.data.pending,
         backgroundColor: 'rgba(0, 153, 113, 0.3)',
       },
       {
         label: 'Confirmed',
-        data: [22, 22, 22, 22, 22],
+        data: stats.data.confirmed,
         backgroundColor: 'rgba(0, 82, 81, 0.3)',
       },
     ],
