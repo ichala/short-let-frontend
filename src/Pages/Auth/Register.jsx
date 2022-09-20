@@ -11,21 +11,9 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const navigate = useNavigate();
-  // const emailRef = useRef(null);
-  // const passwordRef = useRef(null);
-  // const nameRef = useRef(null);
-  // const passwordConfirmRef = useRef();
+
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
-  // const errorMsgs = useSelector(({ signUpReducer }) => signUpReducer.errorMsgs);
-
-  // useEffect(() => {
-  //   nameRef.current.focus();
-  //   if (errorMsgs !== 'Invalid Email/Password. Please try again') {
-  //     setError(errorMsgs);
-  //     dispatch(clearErrorAction());
-  //   }
-  // }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -36,32 +24,6 @@ const Register = () => {
     UserSignUp(formData, dispatch);
     console.log('Clicked');
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError('');
-  //   if (!emailRef.current.value || !passwordRef.current.value || !nameRef.current.value) {
-  //     return setError('Please fill out all fields');
-  //   }
-  //   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-  //     return setError('The passwords do not match');
-  //   }
-
-  //   const payload = {
-  //     name: nameRef.current.value,
-  //     email: emailRef.current.value,
-  //     password: passwordRef.current.value,
-  //   };
-
-  //   // await dispatch(signUpUser(payload));
-
-  //   // if (errorMsgs) {
-  //   //   setError(errorMsgs);
-  //   //   dispatch(clearErrorAction());
-  //   // } else {
-  //   //   navigate('/');
-  //   // }
-  // };
 
   return (
     <section className="session-form">
