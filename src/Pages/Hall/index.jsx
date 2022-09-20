@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react';
-import { editHall, fetchHalls } from '../../Api/ApiCalls';
+import { fetchHalls } from '../../Api/ApiCalls';
 import Create from './create';
+import Update from './update';
 
 const Hall = () => {
   const [halls, setHalls] = useState([]);
 
-  // Fetcha all halls when the the hall is created
-  const [created, setCreated] = useState(false);
+  // Fetcha all halls when the the hall is changed
+  const [changed, setChanged] = useState(false);
 
   useEffect(() => {
     // Restore the created state
-    setCreated(false);
+    setChanged(false);
     fetchHalls().then((response) => {
       setHalls(response);
     });
-  }, [created]);
-
-  const getHall = (id) => {
-    alert(id);
-    editHall(id);
-  };
+  }, [changed]);
 
   return (
     <div className="p-5">
-      <Create setCreated={setCreated} />
+      <Create setChanged={setChanged} />
       <table className="table table-condensed">
         <thead className="table-header">
           <tr>
@@ -42,9 +38,7 @@ const Hall = () => {
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
               <td>
-                <button type="button" className="btn btn-sm btn-info" onClick={() => getHall(hall.id)}>
-                  Update
-                </button>
+                <Update id={hall.id} setChanged={setChanged} />
                 <a href="/" className="btn btn-sm btn-danger">
                   Delete
                 </a>

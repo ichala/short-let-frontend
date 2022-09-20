@@ -5,7 +5,7 @@ import { FaPlus } from 'react-icons/fa';
 import { addHall } from '../../Api/ApiCalls';
 import Modal from '../../components/Modal';
 
-const Create = ({ setCreated }) => {
+const Create = ({ setChanged }) => {
   const [close, setClose] = useState(false);
   const data = {
     name: '',
@@ -23,7 +23,7 @@ const Create = ({ setCreated }) => {
     addHall(form, setClose);
     setForm(data);
     setClose(false); // Allow the hall to have the closing ability next time.
-    setCreated(true); // Send a signla to the parent class.
+    setChanged(true); // Send a signla to the parent class.
   };
   const {
     name, capacity, cost, image, description,
