@@ -6,13 +6,13 @@ import { Pie } from 'react-chartjs-2';
 import styles from '../dashboard.module.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-function ReservationsChart() {
+function ReservationsChart({ stats }) {
   const data = {
-    labels: ['Confirmed', 'Refused', 'Pending'],
+    labels: stats.labels,
     datasets: [
       {
         label: 'Reservations stats',
-        data: [12, 19, 3],
+        data: stats.data,
         backgroundColor: [
           'rgba(63, 175, 78, 0.3)',
           'rgba(0, 153, 113, 0.3)',
