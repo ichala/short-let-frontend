@@ -37,7 +37,7 @@ function ReservationStatsTable() {
         </div>
         <div className="card-body">
           <table className="table">
-            <thead className={styles.card_bg}>
+            <thead>
               <tr>
                 <th scope="col">User</th>
                 <th scope="col">Hall</th>

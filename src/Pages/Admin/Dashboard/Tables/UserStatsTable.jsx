@@ -29,7 +29,7 @@ function UserStatsTable() {
         </div>
         <div className="card-body">
           <table className="table">
-            <thead className={styles.card_bg}>
+            <thead>
               <tr>
                 <th scope="col">Full Name</th>
                 <th scope="col">Email</th>
