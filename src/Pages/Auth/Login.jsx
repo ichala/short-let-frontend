@@ -22,13 +22,14 @@ function Login() {
   if (user) {
     return <Navigate to="/" replace />;
   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    UserLogin(FormData, dispatch);
+  }
   return (
     <>
 
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        UserLogin(FormData, dispatch);
-      }}
+      <form onSubmit={(e) => handleSubmit(e)}
       >
         <div className="mb-3">
           <div id="emailHelp" className="form-text">Email</div>
