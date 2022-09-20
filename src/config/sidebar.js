@@ -36,7 +36,7 @@ const menuItem = [
     protected: true,
   },
   {
-    path: '/halls',
+    path: '/admin/halls',
     name: 'Halls',
     icon: <FaBuilding />,
     end: false,

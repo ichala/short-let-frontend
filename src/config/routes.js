@@ -26,7 +26,7 @@ const routesConfig = [
         element: <Profile />,
       },
       {
-        path: '/halls',
+        path: '/admin/halls',
         element: <Hall />,
       },
     ],
