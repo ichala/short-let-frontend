@@ -4,15 +4,21 @@ import Create from './create';
 
 const Hall = () => {
   const [halls, setHalls] = useState([]);
+
+  // Fetcha all halls when the the hall is created
+  const [created, setCreated] = useState(false);
+
   useEffect(() => {
+    // Restore the created state
+    setCreated(false);
     fetchHalls().then((response) => {
       setHalls(response);
     });
-  }, []);
+  }, [created]);
 
   return (
     <div className="p-5">
-      <Create />
+      <Create setCreated={setCreated} />
       <table className="table table-condensed">
         <thead className="table-header">
           <tr>

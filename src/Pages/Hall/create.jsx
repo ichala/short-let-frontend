@@ -2,33 +2,40 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 import { addHall } from '../../Api/ApiCalls';
 import Modal from '../../components/Modal';
 
-const Create = () => {
-  const navigate = useNavigate();
-
-  const [form, setForm] = useState({
+const Create = ({ setCreated }) => {
+  const [close, setClose] = useState(false);
+  const data = {
     name: '',
     capacity: 0,
     cost: 0,
     image: '',
     description: '',
-  });
+  };
+  const [form, setForm] = useState(data);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = (e) => {
     e.preventDefault();
-    addHall(form).then((response) => {
-      console.log(response);
-      if (response.created.name === form.name) navigate('/halls');
-    });
+    addHall(form, setClose);
+    setForm(data);
+    setClose(false); // Allow the hall to have the closing ability next time.
+    setCreated(true); // Send a signla to the parent class.
   };
-
+  const {
+    name, capacity, cost, image, description,
+  } = form;
   return (
-    <Modal name="newhall" icon={<FaPlus />} buttonText="Add Hall" title="Add a new hall">
+    <Modal
+      name="newhall"
+      icon={<FaPlus />}
+      buttonText="Add Hall"
+      title="Add a new hall"
+      close={close}
+    >
       <form onSubmit={submit}>
         <div className="form-group mb-2">
           <label htmlFor="name" className="fomr-label">
@@ -40,6 +47,7 @@ const Create = () => {
             id="name"
             className="form-control"
             placeholder="Hall name"
+            value={name}
             onChange={handleChange}
             required
           />
@@ -55,6 +63,7 @@ const Create = () => {
             className="form-control"
             placeholder="Hall capacity"
             onChange={handleChange}
+            value={capacity}
             required
             min={10}
             max={10000}
@@ -71,6 +80,7 @@ const Create = () => {
             className="form-control"
             placeholder="Hall cost"
             onChange={handleChange}
+            value={cost}
             required
           />
         </div>
@@ -85,6 +95,7 @@ const Create = () => {
             className="form-control"
             placeholder="Hall image link"
             onChange={handleChange}
+            value={image}
             required
           />
         </div>
@@ -98,6 +109,7 @@ const Create = () => {
             className="form-control"
             placeholder="Hall description"
             onChange={handleChange}
+            value={description}
             required
             minLength={10}
           />
