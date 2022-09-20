@@ -23,6 +23,7 @@ export const authSlice = createSlice({
     },
     Logout: () => {
       localStorage.removeItem('user');
+      return null;
     },
   },
 });

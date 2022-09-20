@@ -1,24 +1,31 @@
+import PrivateRoutes from '../components/Auth/PrivateRoutes';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Home from '../Pages/Home/Home';
+import Profile from '../Pages/Users/Profile';
 
-const routes = [
+const routesConfig = [
   {
     path: '/',
-    component: <Home />,
-    protected: false,
+    element: <Home />,
   },
   {
     path: '/login',
-    component: <Login />,
-    protected: false,
+    element: <Login />,
   },
   {
     path: '/register',
-    component: <Register />,
-    protected: false,
+    element: <Register />,
   },
-
+  {
+    element: <PrivateRoutes />, // <-- check if user authenticated
+    children: [
+      {
+        path: '/profile',
+        element: <Profile />,
+      },
+    ],
+  },
 ];
 
-export default routes;
+export default routesConfig;
