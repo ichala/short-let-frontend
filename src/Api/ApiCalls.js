@@ -59,3 +59,14 @@ export const updateHall = async (data) => await axios
     return false;
   })
   .catch((e) => console.log(e.response.data));
+
+// eslint-disable-next-line no-return-await
+export const removeHall = async (id) => await axios
+  .delete(`/admin/halls/${id}`)
+  .then((response) => {
+    if (response.status === 200) {
+      return response.data;
+    }
+    return null;
+  })
+  .catch((e) => console.log(e.response.data));

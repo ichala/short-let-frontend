@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchHalls } from '../../Api/ApiCalls';
+import { fetchHalls, removeHall } from '../../Api/ApiCalls';
 import Create from './create';
 import Update from './update';
 
@@ -17,6 +17,11 @@ const Hall = () => {
     });
   }, [changed]);
 
+  const deleteHall = (id) => {
+    removeHall(id).then(() => setChanged(true));
+    setChanged(false);
+  };
+
   return (
     <div className="p-5">
       <Create setChanged={setChanged} />
@@ -32,16 +37,16 @@ const Hall = () => {
         </thead>
         <tbody>
           {halls.map((hall) => (
-            <tr key={hall.name}>
+            <tr key={hall.id}>
               <td>{hall.name}</td>
               <td>{hall.capacity}</td>
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
-              <td>
+              <td className="d-flex">
                 <Update id={hall.id} setChanged={setChanged} />
-                <a href="/" className="btn btn-sm btn-danger">
+                <button type="button" onClick={() => deleteHall(hall.id)} className="btn btn-sm btn-danger ml-1">
                   Delete
-                </a>
+                </button>
               </td>
             </tr>
           ))}

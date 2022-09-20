@@ -23,9 +23,11 @@ const Update = ({ id, setChanged }) => {
     setClose(false); // Allow the hall to have the closing ability next time.
     setChanged(true); // Send a signla to the parent class.
   };
+
   const {
     name, capacity, cost, image, description,
   } = form;
+
   return (
     <Modal
       name={`editHall${id}`}
