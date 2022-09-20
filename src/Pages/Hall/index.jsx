@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
 import { fetchHalls } from '../../Api/ApiCalls';
+import Create from './create';
 
 const Hall = () => {
   const [halls, setHalls] = useState([]);
@@ -12,12 +12,7 @@ const Hall = () => {
 
   return (
     <div className="p-5">
-      <div>
-        <a href="/" className="btn btn-success align-self-center mb-3">
-          <FaPlus />
-          New Hall
-        </a>
-      </div>
+      <Create />
       <table className="table table-condensed">
         <thead className="table-header">
           <tr>

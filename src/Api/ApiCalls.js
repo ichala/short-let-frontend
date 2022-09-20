@@ -25,3 +25,14 @@ export const fetchHalls = async () => {
     .catch((e) => console.log(e.response.data));
   return halls;
 };
+
+// eslint-disable-next-line no-return-await
+export const addHall = async (data) => await axios
+  .post('/admin/halls', data)
+  .then((response) => {
+    if (response.status === 200) {
+      return response.data;
+    }
+    return false;
+  })
+  .catch((e) => console.log(e.response.data));
