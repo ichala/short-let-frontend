@@ -50,6 +50,11 @@ const MyReservationsModal = ((props) => {
             </p>
           </div>
         </div>
+        <div className={classes.buttonDiv}>
+          {status === 'Pending' && (
+            <button type="button" className="btn btn-danger m-2 btn-sm" onClick={cancelReservation(reservation.id)} id={reservation.id}>Cancel Reservation</button>
+          )}
+        </div>
       </div>
     </div>,
     document.getElementById('modal'),
