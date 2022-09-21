@@ -1,19 +1,39 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import classes from './MyReservationsModal.module.css';
+import Modal from '../../components/Modal';
+import axios from '../../config/axios';
+import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
 
 const MyReservationsModal = ((props) => {
-  const { reservation, setShowModal, cancelReservation } = props;
+  const {
+    reservation, setError, setReservations, alert,
+  } = props;
+
   const {
     hall: {
       capacity, cost, image, name, description,
     }, reserve_date: reserveDate, status,
   } = reservation;
-  return ReactDOM.createPortal(
-    <div>
-      <div className={classes.overlay} onClick={setShowModal} role="presentation" />
 
+  const [close, setClose] = useState(false);
+
+  const cancelReservation = async (e) => {
+    await axios.delete('/user/reservations', { params: { reservation_id: e } }).then(() => {
+      GetReservationStats(setError, setReservations);
+      setClose(true);
+    });
+  };
+
+  return (
+    <Modal
+      name={reservation.hall.name}
+      icon=""
+      buttonText="More"
+      title=""
+      close={close}
+      btnClass="btn btn-success btn-sm px-3"
+    >
       <div className={classes.popup}>
         <img src={image} className="card-img-top" alt={name} />
         <div className="card-body text-center">
@@ -52,13 +72,11 @@ const MyReservationsModal = ((props) => {
         </div>
         <div className={classes.buttonDiv}>
           {status === 'Pending' ? (
-            <button type="button" className="btn btn-danger m-2 btn-sm" onClick={cancelReservation(reservation.id)} id={reservation.id}>Cancel Reservation</button>
+            <button type="button" className="btn btn-danger m-2 btn-sm" onClick={() => { cancelReservation(reservation.id); alert(true); }} id={reservation.id}>Cancel Reservation</button>
           ) : <button disabled type="button" className="btn btn-danger m-2" style={{ marginRight: '10px' }} id={reservation.id}>Cancel Reservation</button>}
-          <button type="button" className="btn btn-secondary m-2" onClick={setShowModal}>Close</button>
         </div>
       </div>
-    </div>,
-    document.getElementById('modal'),
+    </Modal>
   );
 });
 
