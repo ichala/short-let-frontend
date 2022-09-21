@@ -7,9 +7,6 @@ export const PostReservation = (setError, date, setloading, hall, setSaved) => {
     .then((res) => {
       if (res.status === 200) {
         setSaved(true);
-        setloading(false);
-      } else {
-        setloading(false);
       }
     })
     .catch((e) => {
