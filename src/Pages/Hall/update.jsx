@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { updateHall } from '../../Api/halls/api';
@@ -16,6 +17,12 @@ const Update = ({ data, setChanged }) => {
     updateHall(form).then(() => {
       setClose(true);
       setChanged(true); // Send a signal to the parent class.
+      Swal.fire({
+        title: 'updated',
+        text: 'Hall has been successfully updated!',
+        icon: 'info',
+        confirmButtonText: 'Cool',
+      });
     });
     setClose(false); // Allow the hall to have the closing ability next time.
   };
