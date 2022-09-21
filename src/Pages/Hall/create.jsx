@@ -42,6 +42,7 @@ const Create = ({ setChanged }) => {
       buttonText="Add Hall"
       title="Add a new hall"
       close={close}
+      btnClass="btn-primary"
     >
       <form onSubmit={submit}>
         <div className="form-group mb-2">

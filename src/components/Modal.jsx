@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const Modal = ({
-  name, buttonText, icon, title, children, close,
+  name, buttonText, icon, title, children, close, btnClass,
 }) => {
   const closeRef = useRef(null);
 
@@ -14,7 +14,7 @@ const Modal = ({
     <div className={name}>
       <button
         type="button"
-        className="btn btn-primary"
+        className={`btn ${btnClass}`}
         data-bs-toggle="modal"
         data-bs-target={`#${name}`}
       >

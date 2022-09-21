@@ -36,8 +36,8 @@ const Hall = () => {
         <h2>Halls list</h2>
         <Create setChanged={setChanged} />
       </div>
-      <table className="table table-condensed mt-4">
-        <thead className="table-header">
+      <table className="table table-condensed mt-4 table-hover">
+        <thead className="table-headeri active">
           <tr>
             <th>Name</th>
             <th>Capacity</th>

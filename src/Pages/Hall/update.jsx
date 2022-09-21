@@ -38,6 +38,7 @@ const Update = ({ data, setChanged }) => {
       buttonText="Edit"
       title="Update the hall"
       close={close}
+      btnClass="btn-info btn-sm text-white"
     >
       <form onSubmit={submit}>
         <div className="form-group mb-2">
