@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { fetchHalls, removeHall } from '../../Api/halls/api';
 import Create from './create';
@@ -17,7 +18,15 @@ const Hall = () => {
   }, [changed]);
 
   const deleteHall = (id) => {
-    removeHall(id).then(() => setChanged(true));
+    removeHall(id).then(() => {
+      setChanged(true);
+      Swal.fire({
+        title: 'Deleted',
+        text: 'Hall has been successfully deleted!',
+        icon: 'Error',
+        confirmButtonText: 'Okay',
+      });
+    });
     setChanged(false);
   };
 
@@ -49,7 +58,7 @@ const Hall = () => {
                 <button
                   type="button"
                   onClick={() => deleteHall(hall.id)}
-                  className="btn btn-sm btn-danger ml-1"
+                  className="btn btn-sm btn-danger ms-2"
                 >
                   Delete
                 </button>
