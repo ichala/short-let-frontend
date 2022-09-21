@@ -43,7 +43,7 @@ const Hall = () => {
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
               <td className="d-flex">
-                <Update id={hall.id} setChanged={setChanged} />
+                <Update data={hall} setChanged={setChanged} />
                 <button type="button" onClick={() => deleteHall(hall.id)} className="btn btn-sm btn-danger ml-1">
                   Delete
                 </button>

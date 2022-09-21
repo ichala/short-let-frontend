@@ -1,27 +1,21 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
-import { updateHall, editHall } from '../../Api/halls/api';
+import { updateHall } from '../../Api/halls/api';
 import Modal from '../../components/Modal';
 
-const Update = ({ id, setChanged }) => {
+const Update = ({ data, setChanged }) => {
   const [close, setClose] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(data);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  useEffect(() => {
-    editHall(id).then((hall) => {
-      setForm({ ...hall, hall_id: hall.id });
-    });
-  }, []);
 
   const submit = (e) => {
     e.preventDefault();
     updateHall(form).then(() => setClose(true));
     setClose(false); // Allow the hall to have the closing ability next time.
-    setChanged(true); // Send a signla to the parent class.
+    setChanged(true); // Send a signal to the parent class.
   };
 
   const {
@@ -30,7 +24,7 @@ const Update = ({ id, setChanged }) => {
 
   return (
     <Modal
-      name={`editHall${id}`}
+      name={`editHall${form.id}`}
       icon={<FaEdit />}
       buttonText="Edit"
       title="Update the hall"
