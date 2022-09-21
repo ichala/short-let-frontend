@@ -1,14 +1,12 @@
 import axios from '../../config/axios';
 
-export const PostReservation = (setError, date, setloading, hall, setmessage) => {
+export const PostReservation = (setError, date, setloading, hall, setSaved) => {
   setloading(true);
   axios
     .post('/user/reservation', { reserve_date: date, hall_id: hall.id })
     .then((res) => {
       if (res.status === 200) {
-        setmessage({
-          message: 'Reservation Created',
-        });
+        setSaved(true);
         setloading(false);
       } else {
         setloading(false);
