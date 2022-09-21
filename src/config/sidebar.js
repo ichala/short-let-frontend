@@ -1,9 +1,5 @@
-import {
-  FaTh,
-  FaUserAlt,
-  FaSignInAlt,
-  FaUser,
-} from 'react-icons/fa';
+// eslint-disable-next-line
+import { FaTh, FaUserAlt, FaSignInAlt, FaUser, FaClipboard } from 'react-icons/fa';
 
 const menuItem = [
   {
@@ -11,7 +7,6 @@ const menuItem = [
     name: 'Home',
     icon: <FaTh />,
     end: true,
-
   },
   {
     path: '/register',
@@ -34,7 +29,13 @@ const menuItem = [
     end: false,
     protected: true,
   },
-
+  {
+    path: '/my-reservations',
+    name: 'My Reservations',
+    icon: <FaClipboard />,
+    end: false,
+    protected: true,
+  },
 ];
 
 export default menuItem;
