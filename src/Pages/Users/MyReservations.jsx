@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import MyReservationsModal from './MyReservationsModal';
 import classes from './MyReservationsModal.module.css';
 import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
 
@@ -88,6 +89,14 @@ const MyReservations = () => {
             ))}
           </tbody>
         </table>
+        {showModal && (
+        <MyReservationsModal
+          reservation={reservations.find(
+            (reservation) => reservation.id === btnRef.current,
+          )}
+          setShowModal={() => setShowModal(false)}
+        />
+        )}
       </div>
     </div>
   );
