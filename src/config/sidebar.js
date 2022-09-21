@@ -1,5 +1,6 @@
-// eslint-disable-next-line
-import { FaTh, FaUserAlt, FaSignInAlt, FaUser, FaClipboard } from 'react-icons/fa';
+import {
+  FaTh, FaUserAlt, FaSignInAlt, FaUser, FaClipboard,
+} from 'react-icons/fa';
 
 const menuItem = [
   {
