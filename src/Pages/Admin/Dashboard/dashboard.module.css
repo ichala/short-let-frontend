@@ -1,0 +1,15 @@
+.card_bg {
+  background: var(--main);
+}
+
+.pie_chart_container {
+  max-height: 300px !important;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.671);
+}
+
+.hall_card {
+  height: 300px !important;
+}

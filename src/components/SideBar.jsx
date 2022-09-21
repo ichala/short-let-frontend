@@ -48,7 +48,7 @@ const Sidebar = () => {
         <ul className="nav nav-pills flex-column mb-auto">
 
           {menuItem.map((item, index) => (
-            <li key={index} className={`${((user && !item.protected) || (!user && item.protected)) && !(item.name === 'Home') && 'd-none'} nav-item  text-dark text-decoration-none`}>
+            <li key={index} className={`${((user && !item.protected) || ((!(user?.role === 'admin') && item.admin)) || (!user && item.protected)) && !(item.name === 'Home') && 'd-none'} nav-item  text-dark text-decoration-none`}>
               <NavLink
                 to={item.path}
                 className="nav-link text-decoration-none text-dark d-flex gap-3"
@@ -64,7 +64,7 @@ const Sidebar = () => {
             </li>
           ))}
           {user && (
-          <li>
+          <li className="nav-link text-decoration-none text-dark d-flex gap-3">
             <button
               onClick={() => {
                 dispatch(Logout());
