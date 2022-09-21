@@ -26,17 +26,6 @@ export const addHall = async (data, setClose) => {
 };
 
 // eslint-disable-next-line no-return-await
-export const editHall = async (id) => await axios
-  .get(`/admin/halls/${id}`)
-  .then((response) => {
-    if (response.status === 200) {
-      return response.data;
-    }
-    return null;
-  })
-  .catch((e) => console.log(e.response.data));
-
-// eslint-disable-next-line no-return-await
 export const updateHall = async (data) => await axios
   .patch('/admin/halls', data)
   .then((response) => {
