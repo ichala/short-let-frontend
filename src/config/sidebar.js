@@ -3,8 +3,8 @@ import {
   FaUserAlt,
   FaSignInAlt,
   FaUser,
-  FaClipboard
-  FaRegChartBar
+  FaClipboard,
+  FaRegChartBar,
 } from 'react-icons/fa';
 
 const menuItem = [
