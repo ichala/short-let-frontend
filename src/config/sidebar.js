@@ -4,7 +4,7 @@ import {
   FaSignInAlt,
   FaUser,
   FaClipboard
-  FaRegChartBar,
+  FaRegChartBar
 } from 'react-icons/fa';
 
 const menuItem = [
