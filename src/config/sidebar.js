@@ -3,6 +3,7 @@ import {
   FaUserAlt,
   FaSignInAlt,
   FaUser,
+  FaRegChartBar,
 } from 'react-icons/fa';
 
 const menuItem = [
@@ -33,6 +34,14 @@ const menuItem = [
     icon: <FaUser />,
     end: false,
     protected: true,
+  },
+  {
+    path: '/admin/dashboard',
+    name: 'Dashboard',
+    icon: <FaRegChartBar />,
+    end: false,
+    protected: true,
+    admin: true,
   },
 
 ];
