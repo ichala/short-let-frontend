@@ -1,94 +1,82 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 import { UserSignUp } from '../../Api/ApiCalls';
-
-/* eslint-disable no-unused-vars */
 
 const Register = () => {
   const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
+  const [Loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
+    setError(null);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    UserSignUp(formData, dispatch);
-    console.log('Clicked');
+    if (formData.password !== formData.password_confirmation) {
+      setError("password & password confirmation dosen't match ");
+    } else {
+      UserSignUp(formData, dispatch, setError, setLoading);
+    }
   };
-
+  const user = useSelector((state) => state.user);
+  if (user) {
+    return <Navigate to="/" replace />;
+  }
   return (
-    <section className="session-form">
-      <div className="session-container">
-        <div className="heading">
-          <h1>Sign Up</h1>
-          <hr />
-        </div>
-        <div className="errors">
-          <p style={{ color: 'red' }}>{error}</p>
-        </div>
-        <div className="form-container">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-group">
-              <input type="text" id="first_name" onChange={handleChange} className="input_field" required />
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label htmlFor="name" className="input_label">
-                First Name
-              </label>
-            </div>
-            <div className="form-group">
-              <input type="text" id="last_name" onChange={handleChange} className="input_field" required />
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label htmlFor="name" className="input_label">
-                Last Name
-              </label>
-            </div>
-            <div className="form-group">
-              <input type="email" id="email" onChange={handleChange} className="input_field" required />
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label htmlFor="email" className="input_label">
-                Email address
-              </label>
-            </div>
-            <div className="form-group">
-              <input type={showPassword ? 'text' : 'password'} id="password" onChange={handleChange} className="input_field" required />
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label htmlFor="password" className="input_label">
-                Password
-              </label>
-              <button type="button" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEye /> : <FaEyeSlash /> }
-              </button>
-            </div>
-            <div className="form-group">
-              <input type={showPasswordConfirmation ? 'text' : 'password'} id="password-confirmation" className="input_field" required />
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label htmlFor="password-confirmation" className="input_label">
-                Password Confirmation
-              </label>
-              <button type="button" onClick={() => setShowPasswordConfirmation(!showPasswordConfirmation)}>{showPasswordConfirmation ? <FaEye /> : <FaEyeSlash />}</button>
-            </div>
-            <div className="submit-btn">
-              <button type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
-        <div>
-          <p>
-            Already have an account?
-            <Link to="/login">Login</Link>
-          </p>
-        </div>
+    <>
+      <div className="heading">
+        <h1>Sign Up</h1>
+        <hr />
       </div>
-    </section>
+      {error && (
+      <div className="alert alert-danger" role="alert">
+        {error}
+      </div>
+      )}
+
+      <div className="form-container">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="form-group">
+            First Name
+            <input type="text" id="first_name" onChange={handleChange} className="form-control mb-2" required />
+
+          </div>
+          <div className="form-group">
+            Last Name
+            <input type="text" id="last_name" onChange={handleChange} className="form-control mb-2" required />
+
+          </div>
+          <div className="form-group">
+            Email
+            <input type="email" id="email" onChange={handleChange} className="form-control mb-2" required />
+
+          </div>
+          <div className="form-group">
+            Password
+            <input type="password" id="password" onChange={handleChange} className="form-control mb-2" required />
+
+          </div>
+          <div className="form-group">
+            Password Confirmation
+            <input type="password" id="password_confirmation" onChange={handleChange} className="form-control mb-2" required />
+          </div>
+          <div className="submit-btn mt-4">
+            {!Loading ? (<button type="submit" className="btn btn-primary">Signup</button>) : (<div className="spinner-grow text-sm text-center text-primary" role="status" />)}
+          </div>
+        </form>
+      </div>
+      <div>
+        <p className="mt-2">
+          Already have an account?
+          <Link className="ml-1" to="/login">Login</Link>
+        </p>
+      </div>
+
+    </>
   );
 };
 

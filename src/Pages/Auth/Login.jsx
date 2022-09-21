@@ -4,12 +4,10 @@ import { Navigate } from 'react-router-dom';
 import UserLogin from '../../Api/ApiCalls';
 
 function Login() {
-  const [FormData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const [FormData, setFormData] = useState({});
+  const [error, setError] = useState(null);
+  const [Loading, setLoading] = useState(false);
 
-  const { email, password } = FormData;
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -24,24 +22,30 @@ function Login() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    UserLogin(FormData, dispatch);
-  }
+    UserLogin(FormData, dispatch, setError, setLoading);
+  };
   return (
     <>
-
-      <form onSubmit={(e) => handleSubmit(e)}
-      >
+      <div className="heading">
+        <h1>Login</h1>
+        <hr />
+      </div>
+      {error && (
+      <div className="alert alert-danger" role="alert">
+        {error}
+      </div>
+      )}
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           <div id="emailHelp" className="form-text">Email</div>
-          <input type="email" required onChange={onChange} name="email" value={email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-
+          <input type="email" required onChange={onChange} name="email" className="form-control" />
         </div>
         <div className="mb-3">
           <div id="emailHelp" className="form-text">Password</div>
-          <input onChange={onChange} required name="password" value={password} type="password" className="form-control" id="exampleInputPassword1" />
+          <input onChange={onChange} required name="password" type="password" className="form-control" />
         </div>
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        {Loading ? (<div className="spinner-grow text-sm text-center text-success" role="status" />) : (<button type="submit" className="btn btn-success">Login</button>)}
       </form>
 
     </>
