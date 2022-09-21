@@ -1,0 +1,12 @@
+.button {
+  background-color: #97bf0f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.table {
+  background-color: rgba(151, 191, 15, 0.2);
+}
