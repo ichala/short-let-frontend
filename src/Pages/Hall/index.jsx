@@ -53,7 +53,7 @@ const Hall = () => {
               <td>{hall.capacity}</td>
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
-              <td className="d-flex justify-content-end">
+              <td className="d-flex">
                 <Update data={hall} setChanged={setChanged} />
                 <button
                   type="button"

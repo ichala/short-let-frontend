@@ -18,8 +18,12 @@ const Modal = ({
         data-bs-toggle="modal"
         data-bs-target={`#${name}`}
       >
-        {icon}
-        {buttonText}
+        <div className="d-flex justify-content-between align-items-center">
+          <span className="pb-1">{icon}</span>
+          <span className="ms-1">
+            {buttonText}
+          </span>
+        </div>
       </button>
       <div
         className="modal fade modal-lg"

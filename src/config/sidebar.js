@@ -42,7 +42,9 @@ const menuItem = [
     icon: <FaBuilding />,
     end: false,
     protected: true,
+    admin: true,
   },
+  {
     path: '/admin/dashboard',
     name: 'Dashboard',
     icon: <FaRegChartBar />,
