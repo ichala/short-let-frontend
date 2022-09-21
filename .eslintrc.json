@@ -20,7 +20,8 @@
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "react/prop-types": 0,
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "linebreak-style":0
   },
   "ignorePatterns": [
     "dist/",
