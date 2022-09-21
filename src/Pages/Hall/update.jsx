@@ -13,9 +13,11 @@ const Update = ({ data, setChanged }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    updateHall(form).then(() => setClose(true));
+    updateHall(form).then(() => {
+      setClose(true);
+      setChanged(true); // Send a signal to the parent class.
+    });
     setClose(false); // Allow the hall to have the closing ability next time.
-    setChanged(true); // Send a signal to the parent class.
   };
 
   const {

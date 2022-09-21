@@ -14,16 +14,15 @@ export const fetchHalls = async () => {
 };
 
 // eslint-disable-next-line no-return-await
-export const addHall = async (data, setClose) => {
-  await axios
-    .post('/admin/halls', data)
-    .then((response) => {
-      if (response.status === 200) {
-        setClose(true);
-      }
-    })
-    .catch((e) => console.log(e.response.data));
-};
+export const addHall = async (data) => await axios
+  .post('/admin/halls', data)
+  .then((response) => {
+    if (response.status === 200) {
+      return response;
+    }
+    return null;
+  })
+  .catch((e) => console.log(e.response.data));
 
 // eslint-disable-next-line no-return-await
 export const updateHall = async (data) => await axios

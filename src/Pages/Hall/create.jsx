@@ -20,10 +20,12 @@ const Create = ({ setChanged }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    addHall(form, setClose);
+    addHall(form).then(() => {
+      setClose(true);
+      setChanged(true); // Send a signla to the parent class.
+    });
     setForm(data);
     setClose(false); // Allow the hall to have the closing ability next time.
-    setChanged(true); // Send a signla to the parent class.
   };
   const {
     name, capacity, cost, image, description,

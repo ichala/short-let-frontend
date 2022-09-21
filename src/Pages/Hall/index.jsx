@@ -10,10 +10,9 @@ const Hall = () => {
   const [changed, setChanged] = useState(false);
 
   useEffect(() => {
-    // Restore the created state
-    setChanged(false);
     fetchHalls().then((response) => {
       setHalls(response);
+      setChanged(false);
     });
   }, [changed]);
 
@@ -44,7 +43,11 @@ const Hall = () => {
               <td>{hall.description}</td>
               <td className="d-flex">
                 <Update data={hall} setChanged={setChanged} />
-                <button type="button" onClick={() => deleteHall(hall.id)} className="btn btn-sm btn-danger ml-1">
+                <button
+                  type="button"
+                  onClick={() => deleteHall(hall.id)}
+                  className="btn btn-sm btn-danger ml-1"
+                >
                   Delete
                 </button>
               </td>
