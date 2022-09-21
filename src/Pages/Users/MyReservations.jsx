@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from '../../config/axios';
 import MyReservationsModal from './MyReservationsModal';
 import classes from './MyReservationsModal.module.css';
 import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
@@ -11,6 +12,13 @@ const MyReservations = () => {
   const [error, setError] = useState('');
   const user = useSelector((state) => state.user);
   const btnRef = useRef();
+
+  const cancelReservation = async (e) => {
+    await axios.delete('/user/reservations', { params: { reservation_id: e.target.id } }).then(() => {
+      setShowModal(false);
+      GetReservationStats(setError, setReservations);
+    });
+  };
 
   const handleModal = (reservation) => {
     setShowModal(!showModal);
@@ -91,6 +99,7 @@ const MyReservations = () => {
         </table>
         {showModal && (
         <MyReservationsModal
+          cancelReservation={() => cancelReservation}
           reservation={reservations.find(
             (reservation) => reservation.id === btnRef.current,
           )}
