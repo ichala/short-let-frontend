@@ -9,6 +9,7 @@ import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
 const MyReservations = () => {
   const [reservations, setReservations] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [deleted, setDeleted] = useState(false);
   const [error, setError] = useState('');
   const user = useSelector((state) => state.user);
   const btnRef = useRef();
@@ -17,12 +18,26 @@ const MyReservations = () => {
     await axios.delete('/user/reservations', { params: { reservation_id: e.target.id } }).then(() => {
       setShowModal(false);
       GetReservationStats(setError, setReservations);
+      setDeleted(true);
     });
   };
 
   const handleModal = (reservation) => {
     setShowModal(!showModal);
     btnRef.current = reservation.id;
+  };
+
+  const hide = () => {
+    const alert = (
+      <div className="alert alert-success">
+        You have successfully cancelled your reservation
+        {btnRef.current.id}
+      </div>
+    );
+    setTimeout(() => {
+      setDeleted(false);
+    }, 3000);
+    return alert;
   };
 
   useEffect(() => {
@@ -63,6 +78,7 @@ const MyReservations = () => {
         Below you can find details about all your reservations
       </h4>
       <div>
+        {deleted && hide()}
         <table className={`table text-center table-responsive  ${classes.table}`}>
           <thead>
             <tr>
