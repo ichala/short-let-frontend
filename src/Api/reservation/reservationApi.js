@@ -1,21 +1,29 @@
 import axios from '../../config/axios';
 
-export default async function PostReservation(error, reservation) {
-  await axios
-    .post('/user/reservation')
+export const PostReservation = (setError, date, setloading, hall, setmessage) => {
+  setloading(true);
+  axios
+    .post('/user/reservation', { reserve_date: date, hall_id: hall.id })
     .then((res) => {
       if (res.status === 200) {
-        reservation(res.data.reservation);
+        setmessage({
+          message: 'Reservation Created',
+        });
+        setloading(false);
+      } else {
+        setloading(false);
       }
     })
     .catch((e) => {
       if (e.toJSON().message === 'Network Error') {
-        error('No Internet Or Server is not running');
+        setError({ message: 'No Internet Or Server is not running' });
+        setloading(false);
       } else {
-        error(e.response.data.error);
+        setError(e.response.data.error);
+        setloading(false);
       }
     });
-}
+};
 
 export const checkDate = (setError, setAvailableHalls, date, setloading) => {
   setloading(true);

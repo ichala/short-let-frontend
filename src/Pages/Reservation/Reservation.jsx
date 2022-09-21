@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { checkDate } from '../../Api/reservation/reservationApi';
+import { PostReservation, checkDate } from '../../Api/reservation/reservationApi';
 
 function Reservation() {
   const [date, setDate] = useState('');
@@ -7,18 +7,38 @@ function Reservation() {
   const [loading, setloading] = useState(false);
   const [availableHalls, setAvailableHalls] = useState([]);
   const [hall, sethall] = useState(availableHalls[0]);
+  const [message, setmessage] = useState('');
 
-  console.log(availableHalls);
-  console.log(hall);
-  console.log(date);
+  function ChooseHall(id) {
+    availableHalls.forEach((hall) => {
+      if (hall.id === Number(id)) {
+        sethall(hall);
+      }
+    });
+  }
+  // console.log(hall);
   if (availableHalls.length > 0) {
     return (
       <div>
-        <select className="form-select" aria-label="Default select example" onChange={(e) => sethall(e.target.value)}>
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          onChange={(e) => ChooseHall(e.target.value)}
+        >
           {availableHalls.map((hall) => (
-            <option key={hall.id} value={hall.id}>{hall.name}</option>
+            <option key={hall.id} value={hall.id}>
+              {hall.name}
+            </option>
           ))}
         </select>
+        <button
+          type="button"
+          className="btn btn-dark"
+          onClick={() => PostReservation(setError, date, setloading, hall, setmessage)}
+        >
+          Reserve
+        </button>
+        {message}
       </div>
     );
   }
@@ -45,6 +65,7 @@ function Reservation() {
           Next
         </button>
       )}
+
     </div>
   );
 }
