@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { UserLogin } from '../../Api/ApiCalls';
+import UserLogin from '../../Api/ApiCalls';
 
 function Login() {
   const [FormData, setFormData] = useState({
