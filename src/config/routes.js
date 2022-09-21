@@ -4,6 +4,7 @@ import Dashboard from '../Pages/Admin/Dashboard/Dashboard';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Home from '../Pages/Home/Home';
+import Reservation from '../Pages/Reservation/Reservation';
 import Profile from '../Pages/Users/Profile';
 
 const routesConfig = [
@@ -26,8 +27,11 @@ const routesConfig = [
         path: '/profile',
         element: <Profile />,
       },
+      {
+        path: '/reservation',
+        element: <Reservation />,
+      },
     ],
-
   },
   {
     element: <AdminRoutes />, // <-- check if user authenticated
