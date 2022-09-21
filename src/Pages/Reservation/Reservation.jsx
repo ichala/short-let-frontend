@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { PostReservation, checkDate } from '../../Api/reservation/reservationApi';
 
 function Reservation() {
@@ -7,7 +8,7 @@ function Reservation() {
   const [loading, setloading] = useState(false);
   const [availableHalls, setAvailableHalls] = useState([]);
   const [hall, sethall] = useState(availableHalls[0]);
-  const [message, setmessage] = useState('');
+  const [saved, setSaved] = useState(false);
 
   function ChooseHall(id) {
     availableHalls.forEach((hall) => {
@@ -15,6 +16,9 @@ function Reservation() {
         sethall(hall);
       }
     });
+  }
+  if (saved) {
+    return <Navigate to="/" replace />;
   }
   // console.log(hall);
   if (availableHalls.length > 0) {
@@ -34,11 +38,10 @@ function Reservation() {
         <button
           type="button"
           className="btn btn-dark"
-          onClick={() => PostReservation(setError, date, setloading, hall, setmessage)}
+          onClick={() => PostReservation(setError, date, setloading, hall, setSaved)}
         >
           Reserve
         </button>
-        {message}
       </div>
     );
   }
