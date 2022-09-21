@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { addHall } from '../../Api/halls/api';
+import { addHall } from '../../Api/admins/halls/api';
 import Modal from '../../components/Modal';
 
 const Create = ({ setChanged }) => {

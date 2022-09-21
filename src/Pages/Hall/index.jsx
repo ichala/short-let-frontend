@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
-import { fetchHalls, removeHall } from '../../Api/halls/api';
+import { fetchHalls, removeHall } from '../../Api/admins/halls/api';
 import Create from './create';
 import Update from './update';
 
