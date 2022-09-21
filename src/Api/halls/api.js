@@ -13,8 +13,7 @@ export const fetchHalls = async () => {
   return halls;
 };
 
-// eslint-disable-next-line no-return-await
-export const addHall = async (data) => await axios
+export const addHall = async (data) => axios
   .post('/admin/halls', data)
   .then((response) => {
     if (response.status === 200) {
@@ -24,8 +23,7 @@ export const addHall = async (data) => await axios
   })
   .catch((e) => console.log(e.response.data));
 
-// eslint-disable-next-line no-return-await
-export const updateHall = async (data) => await axios
+export const updateHall = async (data) => axios
   .patch('/admin/halls', data)
   .then((response) => {
     if (response.status === 200) {
@@ -35,8 +33,7 @@ export const updateHall = async (data) => await axios
   })
   .catch((e) => console.log(e.response.data));
 
-// eslint-disable-next-line no-return-await
-export const removeHall = async (id) => await axios
+export const removeHall = async (id) => axios
   .delete(`/admin/halls/${id}`)
   .then((response) => {
     if (response.status === 200) {
