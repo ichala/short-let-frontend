@@ -1,4 +1,6 @@
+import AdminRoutes from '../components/Auth/AdminRoutes';
 import PrivateRoutes from '../components/Auth/PrivateRoutes';
+import Dashboard from '../Pages/Admin/Dashboard/Dashboard';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Hall from '../Pages/Hall';
@@ -28,6 +30,16 @@ const routesConfig = [
       {
         path: '/admin/halls',
         element: <Hall />,
+      },
+    ],
+
+  },
+  {
+    element: <AdminRoutes />, // <-- check if user authenticated
+    children: [
+      {
+        path: '/admin/dashboard',
+        element: <Dashboard />,
       },
     ],
   },
