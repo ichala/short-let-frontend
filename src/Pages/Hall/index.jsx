@@ -6,7 +6,7 @@ import Update from './update';
 const Hall = () => {
   const [halls, setHalls] = useState([]);
 
-  // Fetcha all halls when the the hall is changed
+  // Fetch all halls when the the hall is changed or added
   const [changed, setChanged] = useState(false);
 
   useEffect(() => {
@@ -23,8 +23,11 @@ const Hall = () => {
 
   return (
     <div className="p-5">
-      <Create setChanged={setChanged} />
-      <table className="table table-condensed">
+      <div className="d-flex justify-content-between align-items-center">
+        <h2>Halls list</h2>
+        <Create setChanged={setChanged} />
+      </div>
+      <table className="table table-condensed mt-4">
         <thead className="table-header">
           <tr>
             <th>Name</th>
@@ -41,7 +44,7 @@ const Hall = () => {
               <td>{hall.capacity}</td>
               <td>{hall.cost}</td>
               <td>{hall.description}</td>
-              <td className="d-flex">
+              <td className="d-flex justify-content-end">
                 <Update data={hall} setChanged={setChanged} />
                 <button
                   type="button"
