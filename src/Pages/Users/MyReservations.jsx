@@ -1,37 +1,21 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import axios from '../../config/axios';
 import MyReservationsModal from './MyReservationsModal';
 import classes from './MyReservationsModal.module.css';
 import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
 
 const MyReservations = () => {
   const [reservations, setReservations] = useState(null);
-  const [showModal, setShowModal] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [error, setError] = useState('');
+  const [reservation, setReservation] = useState(0);
   const user = useSelector((state) => state.user);
-  const btnRef = useRef();
-
-  const cancelReservation = async (e) => {
-    await axios.delete('/user/reservations', { params: { reservation_id: e.target.id } }).then(() => {
-      setShowModal(false);
-      GetReservationStats(setError, setReservations);
-      setDeleted(true);
-    });
-  };
-
-  const handleModal = (reservation) => {
-    setShowModal(!showModal);
-    btnRef.current = reservation.id;
-  };
 
   const hide = () => {
     const alert = (
       <div className="alert alert-success">
         You have successfully cancelled your reservation
-        {btnRef.current.id}
       </div>
     );
     setTimeout(() => {
@@ -42,7 +26,7 @@ const MyReservations = () => {
 
   useEffect(() => {
     GetReservationStats(setError, setReservations);
-  }, []);
+  }, [reservation]);
 
   if (!reservations) {
     return (
@@ -99,29 +83,17 @@ const MyReservations = () => {
                       : <span className="bg-danger text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>}
                 </td>
                 <td>
-                  <button
-                    type="button"
-                    className={`btn btn-sm ${classes.button}`}
-                    onClick={() => handleModal(reservation)}
-                    id={reservation.id}
-                    ref={btnRef}
-                  >
-                    More
-                  </button>
+                  <MyReservationsModal
+                    error={setError}
+                    setReservations={setReservation}
+                    reservation={reservation}
+                    alert={setDeleted}
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {showModal && (
-        <MyReservationsModal
-          cancelReservation={() => cancelReservation}
-          reservation={reservations.find(
-            (reservation) => reservation.id === btnRef.current,
-          )}
-          setShowModal={() => setShowModal(false)}
-        />
-        )}
       </div>
     </div>
   );
