@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { manageRequest } from '../../../Api/admins/requests/manageRequests';
+import Modal from '../../../components/Modal';
 
 const RequestModal = (props) => {
   const { request } = props;
 
   const [message, setMessage] = useState('');
+  const [close, setClose] = useState(false);
 
   const messageData = (e) => {
     setMessage(e.target.value);
@@ -18,63 +20,58 @@ const RequestModal = (props) => {
     };
     setMessage('');
     manageRequest({ ...data });
+    setClose(true);
   };
 
   return (
     <div>
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+      <Modal
+        name={`editHall${request.id}`}
+        icon=""
+        buttonText="More"
+        title=""
+        close={close}
+        btnClass="btn btn-success btn-sm px-3"
+      >
+        <div className="card mb-3">
+          <div className="row g-0">
+            <div className="col-md-4">
+              <img src={request.hall.image} className="img-fluid rounded-start h-100" alt={request.hall.name} />
             </div>
-            <div className="modal-body">
-              <div className="card mb-3">
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img src={request.hall.image} className="img-fluid rounded-start h-100" alt={request.hall.name} />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        {request.user.first_name}
-                        {' '}
-                        {request.user.last_name}
-                      </h5>
-                      <h6>{request.user.email}</h6>
-                      <p className="card-text">
-                        Requested reservation Date:
-                        {' '}
-                        {request.reserve_date}
-                      </p>
-                      <p className="card-text">
-                        <small className="text-muted">
-                          Hall cost:
-                          {' '}
-                          {request.hall.cost}
-                        </small>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h5 className="card-title">
+                  {request.user.first_name}
+                  {' '}
+                  {request.user.last_name}
+                </h5>
+                <h6>{request.user.email}</h6>
+                <p className="card-text">
+                  Requested reservation Date:
+                  {' '}
+                  {request.reserve_date}
+                </p>
+                <p className="card-text">
+                  <small className="text-muted">
+                    Hall cost:
+                    {' '}
+                    {request.hall.cost}
+                  </small>
+                </p>
               </div>
-              <form>
-                <div className="mb-3">
-                  <textarea className="form-control" id="message-text" value={message} onChange={(e) => messageData(e)} placeholder="Insert your message" />
-                </div>
-              </form>
-            </div>
-            <div className="text-center d-flex justify-content-center gap-3 mb-2">
-              <button type="button" className="btn btn-success" value="Confirm" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
-              <button type="button" className="btn btn-danger" value="Refuse" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </div>
+        <form>
+          <div className="mb-3">
+            <textarea className="form-control" id="message-text" value={message} onChange={(e) => messageData(e)} placeholder="Insert your message" />
+          </div>
+        </form>
+        <div className="text-center d-flex justify-content-center gap-3 mb-2">
+          <button type="button" className="btn btn-success" value="Confirm" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
+          <button type="button" className="btn btn-danger" value="Refuse" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
+        </div>
+      </Modal>
     </div>
   );
 };
