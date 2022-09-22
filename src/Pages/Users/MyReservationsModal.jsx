@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import classes from './MyReservationsModal.module.css';
 import Modal from '../../components/Modal';
-import axios from '../../config/axios';
-import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
+import GetReservationStats, { cancelReservation } from '../../Api/myReservations/MyReservationsAPI';
 
 const MyReservationsModal = ((props) => {
   const {
@@ -18,11 +17,10 @@ const MyReservationsModal = ((props) => {
 
   const [close, setClose] = useState(false);
 
-  const cancelReservation = async (e) => {
-    await axios.delete('/user/reservations', { params: { reservation_id: e } }).then(() => {
-      GetReservationStats(setError, setReservations);
-      setClose(true);
-    });
+  const cancelThisReservation = async (id) => {
+    cancelReservation(id);
+    GetReservationStats(setError, setReservations);
+    setClose(true);
   };
 
   return (
@@ -72,7 +70,7 @@ const MyReservationsModal = ((props) => {
         </div>
         <div className={classes.buttonDiv}>
           {status === 'Pending' ? (
-            <button type="button" className="btn btn-danger m-2 btn-sm" onClick={() => { cancelReservation(reservation.id); alert(true); }} id={reservation.id}>Cancel Reservation</button>
+            <button type="button" className="btn btn-danger m-2 btn-sm" onClick={() => { cancelThisReservation(reservation.id); alert(true); }} id={reservation.id}>Cancel Reservation</button>
           ) : <button disabled type="button" className="btn btn-danger m-2" style={{ marginRight: '10px' }} id={reservation.id}>Cancel Reservation</button>}
         </div>
       </div>
