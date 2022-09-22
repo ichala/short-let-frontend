@@ -26,26 +26,7 @@ const AllRequests = () => {
   }
 
   return (
-    <div>
-      <table className="table table-responsive text-center">
-        <thead className="align-middle">
-          <tr>
-            <th scope="col">Name</th>
-            <th className="d-none d-lg-block" scope="col">Email</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody className="align-middle">
-          {requests.map((request) => request.status === 'Pending' && (
-          <tr key={request.id}>
-            <td>{request.user.first_name}</td>
-            <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
-            <td>{request.reserve_date}</td>
-          </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <div />
   );
 };
 
