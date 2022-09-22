@@ -37,14 +37,14 @@ function ChooseHall({
     });
   }
   return (
-    <section className="vh-75 mt-5 ">
+    <section className="vh-75 m-auto">
       <div className="container py-5 mt-5 h-100">
         <div className="row d-flex align-items-center justify-content-center h-100 mt-5">
           <div className="col-md-12 col-lg-12 col-xl-12 mt-5">
             <button
               onClick={() => setAvailableHalls([])}
               type="button"
-              className={`${styles.button} btn btn-light`}
+              className={`${styles.button} btn btn-light mb-2`}
             >
               <BiArrowBack size="30" />
             </button>
