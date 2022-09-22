@@ -28,10 +28,10 @@ const RequestModal = (props) => {
       <Modal
         name={`editHall${request.id}`}
         icon=""
-        buttonText="More"
+        buttonText="Manage"
         title=""
         close={close}
-        btnClass="btn btn-success btn-sm px-3"
+        btnClass="btn btn-outline-success btn-sm px-3"
       >
         <div className="card mb-3">
           <div className="row g-0">
