@@ -7,6 +7,8 @@ const Profile = () => {
     last_name: '',
     role: '',
     email: '',
+    password: '',
+    confirm_password: '',
   });
 
   const [error, setError] = useState(null);
@@ -23,11 +25,20 @@ const Profile = () => {
         error(e.response.data.error);
         setIsLoading(false);
       });
+
+    setForm({ ...form, password: '', confirm_password: '' });
   }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setError(null);
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (form.password !== form.confirm_password) {
+      setError('Make sure the password and password confirmation fields are the same.');
+    }
   };
 
   return (
@@ -43,7 +54,7 @@ const Profile = () => {
       )}
 
       <div className="form-container">
-        <form onSubmit={() => alert('hello')}>
+        <form onSubmit={submit}>
           <div className="form-group">
             First Name
             <input
@@ -95,6 +106,7 @@ const Profile = () => {
               name="password_confirmation"
               onChange={handleChange}
               className="form-control mb-2"
+              value={form.confirm_password}
               required
             />
           </div>
