@@ -3,6 +3,8 @@ import {
   FaUserAlt,
   FaSignInAlt,
   FaUser,
+  FaClipboard,
+  FaBuilding,
   FaRegChartBar,
   FaBookOpen,
 } from 'react-icons/fa';
@@ -39,6 +41,13 @@ const menuItem = [
     path: '/reservation',
     name: 'Reservation',
     icon: <FaBookOpen />,
+    end: false,
+    protected: true,
+  },
+  { 
+    path: '/my-reservations',
+    name: 'My Reservations',
+    icon: <FaClipboard />,
     end: false,
     protected: true,
   },
