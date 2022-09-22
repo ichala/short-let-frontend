@@ -28,8 +28,14 @@ const ManageRequests = () => {
   }
 
   return (
-    <div>
-      <table className="table table-responsive text-center table-condensed mt-4">
+    <div className="container">
+      <div className="row">
+        <div className="col-12 mt-5">
+          <h1 className="text-center">Pending Requests</h1>
+          <h4 className="text-center mt-5 mb-5">Here you can Approve / Decline all requests</h4>
+        </div>
+      </div>
+      <table className="table table-responsive text-center table-condensed mt-4 mb-5">
         <thead className="align-middle table-headeri active">
           <tr>
             <th scope="col">Name</th>
@@ -38,7 +44,7 @@ const ManageRequests = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody className="align-middle">
+        <tbody className="align-middle bg-light">
           {requests.map((request) => request.status === 'Pending' && (
           <tr key={request.id}>
             <td>{request.user.first_name}</td>
