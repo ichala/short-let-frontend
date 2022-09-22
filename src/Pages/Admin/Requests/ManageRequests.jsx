@@ -29,8 +29,8 @@ const ManageRequests = () => {
 
   return (
     <div>
-      <table className="table table-responsive text-center">
-        <thead className="align-middle">
+      <table className="table table-responsive text-center table-condensed mt-4">
+        <thead className="align-middle table-headeri active">
           <tr>
             <th scope="col">Name</th>
             <th className="d-none d-lg-block" scope="col">Email</th>
