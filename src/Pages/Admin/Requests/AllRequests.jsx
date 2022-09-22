@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import fetchRequests from '../../../Api/admins/requests/manageRequests';
 
@@ -54,7 +55,11 @@ const AllRequests = () => {
                   <td>{request.reserve_date}</td>
                   <td>{request.hall.name}</td>
                   <td>{request.hall.cost}</td>
-                  <td>{request.status}</td>
+                  <td>
+                    {request.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>
+                      : request.status === 'Confirmed' ? <span className="bg-success text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>
+                        : <span className="bg-danger text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>}
+                  </td>
                 </tr>
               ))}
             </tbody>
