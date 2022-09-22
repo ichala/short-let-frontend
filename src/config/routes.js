@@ -5,6 +5,7 @@ import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Hall from '../Pages/Hall';
 import Home from '../Pages/Home/Home';
+import Reservation from '../Pages/Reservation/Reservation';
 import MyReservations from '../Pages/Users/MyReservations';
 import Profile from '../Pages/Users/Profile';
 
@@ -29,11 +30,14 @@ const routesConfig = [
         element: <Profile />,
       },
       {
+        path: '/reservation',
+        element: <Reservation />,
+      },
+      {
         path: '/my-reservations',
         element: <MyReservations />,
       },
     ],
-
   },
   {
     element: <AdminRoutes />, // <-- check if user authenticated
