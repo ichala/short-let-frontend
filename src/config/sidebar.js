@@ -3,6 +3,7 @@ import {
   FaUserAlt,
   FaSignInAlt,
   FaUser,
+  FaBuilding,
   FaRegChartBar,
 } from 'react-icons/fa';
 
@@ -34,6 +35,14 @@ const menuItem = [
     icon: <FaUser />,
     end: false,
     protected: true,
+  },
+  {
+    path: '/admin/halls',
+    name: 'Halls',
+    icon: <FaBuilding />,
+    end: false,
+    protected: true,
+    admin: true,
   },
   {
     path: '/admin/dashboard',

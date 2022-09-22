@@ -26,6 +26,7 @@ function Login() {
   };
   return (
     <>
+
       <div className="heading">
         <h1>Login</h1>
         <hr />
@@ -46,8 +47,8 @@ function Login() {
         </div>
 
         {Loading ? (<div className="spinner-grow text-sm text-center text-success" role="status" />) : (<button type="submit" className="btn btn-success">Login</button>)}
-      </form>
 
+      </form>
     </>
   );
 }
