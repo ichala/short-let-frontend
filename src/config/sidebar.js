@@ -3,6 +3,7 @@ import {
   FaUserAlt,
   FaSignInAlt,
   FaUser,
+  FaClipboard,
   FaBuilding,
   FaRegChartBar,
 } from 'react-icons/fa';
@@ -13,7 +14,6 @@ const menuItem = [
     name: 'Home',
     icon: <FaTh />,
     end: true,
-
   },
   {
     path: '/register',
@@ -37,6 +37,13 @@ const menuItem = [
     protected: true,
   },
   {
+    path: '/my-reservations',
+    name: 'My Reservations',
+    icon: <FaClipboard />,
+    end: false,
+    protected: true,
+  },
+  {
     path: '/admin/halls',
     name: 'Halls',
     icon: <FaBuilding />,
@@ -52,7 +59,6 @@ const menuItem = [
     protected: true,
     admin: true,
   },
-
 ];
 
 export default menuItem;
