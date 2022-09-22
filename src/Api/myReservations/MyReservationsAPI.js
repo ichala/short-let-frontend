@@ -16,3 +16,7 @@ export default async function GetReservationStats(error, stats) {
       }
     });
 }
+
+export const cancelReservation = async (e) => {
+  await axios.delete('/user/reservations', { params: { reservation_id: e } }).then(() => {});
+};
