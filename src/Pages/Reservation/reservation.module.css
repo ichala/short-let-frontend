@@ -31,3 +31,7 @@ button {
   min-width: 100%;
   background-color: rgba(63, 98, 18, 0.6);
 }
+
+.button {
+  background-color: #A3E635
+}

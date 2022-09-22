@@ -38,13 +38,14 @@ function ChooseHall({
   }
   return (
     <section className="vh-75 mt-5 ">
-
       <div className="container py-5 mt-5 h-100">
-
         <div className="row d-flex align-items-center justify-content-center h-100 mt-5">
-
           <div className="col-md-12 col-lg-12 col-xl-12 mt-5">
-            <button onClick={() => setAvailableHalls([])} type="button" className="btn btn-dark">
+            <button
+              onClick={() => setAvailableHalls([])}
+              type="button"
+              className={`${styles.button} btn btn-light`}
+            >
               <BiArrowBack size="30" />
             </button>
             <div className={`${styles.card_bg} card text-white mt-md-3`}>
@@ -55,8 +56,8 @@ function ChooseHall({
                   </blockquote>
                   <figcaption className="blockquote-footer text-white">
                     <cite className="text-white">
-                      Choose your date and we will list the available halls
-                      for you
+                      Choose your date and we will list the available halls for
+                      you
                     </cite>
                   </figcaption>
                 </figure>
@@ -67,9 +68,7 @@ function ChooseHall({
                   }}
                   className="flex-nowrap d-flex justify-content-center align-items-center flex-column "
                 >
-                  <p className="text-danger mb-1 ">
-                    {error && error.message}
-                  </p>
+                  <p className="text-danger mb-1 ">{error && error.message}</p>
                   <select
                     disabled={loading}
                     className="form-select text-center"
@@ -94,11 +93,8 @@ function ChooseHall({
                       role="status"
                     />
                   ) : (
-                    <div>
-                      <button
-                        type="submit"
-                        className="btn btn-dark mt-3"
-                      >
+                    <div className="font-weight-bold">
+                      <button type="submit" className="btn btn-dark mt-3">
                         Book Now
                       </button>
                     </div>
