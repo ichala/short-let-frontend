@@ -18,6 +18,7 @@ function Reservation() {
         date={date}
         setSaved={setSaved}
         availableHalls={availableHalls}
+        setAvailableHalls={setAvailableHalls}
       />
     );
   }

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import { BiArrowBack } from 'react-icons/bi';
 import { PostReservation } from '../../Api/reservation/reservationApi';
+import HallDisplay from './HallDisplay';
 import styles from './reservation.module.css';
 
-function ChooseHall({ availableHalls, date, setSaved }) {
+function ChooseHall({
+  setAvailableHalls, availableHalls, date, setSaved,
+}) {
   const [error, setError] = useState(null);
   const [loading, setloading] = useState(false);
   const [hall, setHall] = useState(availableHalls[0]);
@@ -13,16 +18,40 @@ function ChooseHall({ availableHalls, date, setSaved }) {
       }
     });
   }
+  function ConfirmReservation() {
+    Swal.fire({
+
+      title: `Do you want to confirm the reservation ? <br> <p class="mt-2 display-5"> ${hall.name} </p> <br><p class="display-6">  Cost: ${Number(hall.cost)}$ </p>`,
+      showDenyButton: true,
+      confirmButtonText: 'Confirm',
+      denyButtonText: 'Cancel',
+      allowOutsideClick: false,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        PostReservation(setError, date, setloading, hall, setSaved);
+        Swal.fire('Reservation Request Submitted', '', 'success');
+      } else if (result.isDenied) {
+        Swal.fire('Reservation Canceled', '', 'info');
+      }
+    });
+  }
   return (
     <section className="vh-75 mt-5 ">
+
       <div className="container py-5 mt-5 h-100">
+
         <div className="row d-flex align-items-center justify-content-center h-100 mt-5">
+
           <div className="col-md-12 col-lg-12 col-xl-12 mt-5">
-            <div className={`${styles.card_bg} card text-white mt-md-5`}>
+            <button onClick={() => setAvailableHalls([])} type="button" className="btn btn-dark">
+              <BiArrowBack size="30" />
+            </button>
+            <div className={`${styles.card_bg} card text-white mt-md-3`}>
               <div className="card-body">
                 <figure className="text-center text-sm">
                   <blockquote className="blockquote text-center">
-                    <h3 className="display-4">Choose a date</h3>
+                    <h3 className="display-4">Choose a Hall</h3>
                   </blockquote>
                   <figcaption className="blockquote-footer text-white">
                     <cite className="text-white">
@@ -34,7 +63,7 @@ function ChooseHall({ availableHalls, date, setSaved }) {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    PostReservation(setError, date, setloading, hall, setSaved);
+                    ConfirmReservation();
                   }}
                   className="flex-nowrap d-flex justify-content-center align-items-center flex-column "
                 >
@@ -43,7 +72,7 @@ function ChooseHall({ availableHalls, date, setSaved }) {
                   </p>
                   <select
                     disabled={loading}
-                    className="form-select"
+                    className="form-select text-center"
                     aria-label="Default select example"
                     required
                     onChange={(e) => {
@@ -54,12 +83,11 @@ function ChooseHall({ availableHalls, date, setSaved }) {
                     {availableHalls.map((hall) => (
                       <option key={hall.id} value={hall.id}>
                         {hall.name}
-                        {' --> '}
-                        {hall.cost}
-                        $ /day
                       </option>
                     ))}
                   </select>
+
+                  <HallDisplay hall={hall} />
                   {loading ? (
                     <div
                       className="spinner-grow mt-3 text-md text-center text-success"
@@ -71,7 +99,7 @@ function ChooseHall({ availableHalls, date, setSaved }) {
                         type="submit"
                         className="btn btn-dark mt-3"
                       >
-                        Reserve
+                        Book Now
                       </button>
                     </div>
                   )}
