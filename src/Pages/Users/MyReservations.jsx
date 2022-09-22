@@ -79,7 +79,7 @@ const MyReservations = () => {
                 <td>{reservation.hall.name}</td>
                 <td>
                   {reservation.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded m-2 py-1 px-1">{reservation.status}</span>
-                    : reservation.status === 'Approved' ? <span className="bg-success text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>
+                    : reservation.status === 'Confirmed' ? <span className="bg-success text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>
                       : <span className="bg-danger text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>}
                 </td>
                 <td>
