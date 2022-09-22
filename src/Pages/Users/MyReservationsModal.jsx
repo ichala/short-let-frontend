@@ -25,7 +25,7 @@ const MyReservationsModal = ((props) => {
 
   return (
     <Modal
-      name={reservation.hall.name}
+      name={reservation.user.first_name}
       icon=""
       buttonText="More"
       title=""
