@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { fetchAuthorizedUser } from '../../Api/ApiCalls';
+import updateProfile from '../../Api/profile/api';
 
 const Profile = () => {
   const [form, setForm] = useState({
@@ -36,8 +38,28 @@ const Profile = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    console.log(form.password);
+    console.log(form);
     if (form.password !== form.confirm_password) {
       setError('Make sure the password and password confirmation fields are the same.');
+    } else {
+      updateProfile(form)
+        .then(() => {
+          Swal.fire({
+            title: 'Updated',
+            text: 'Your profile has been updated successfully.',
+            icon: 'info',
+            confirmButtonText: 'Cool',
+          });
+        })
+        .catch(() => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: 'Something went wrong!',
+            confirmButtonText: 'Close',
+          });
+        });
     }
   };
 
@@ -96,18 +118,16 @@ const Profile = () => {
               onChange={handleChange}
               className="form-control mb-2"
               value={form.password}
-              required
             />
           </div>
           <div className="form-group">
             Password Confirmation
             <input
               type="password"
-              name="password_confirmation"
+              name="confirm_password"
               onChange={handleChange}
               className="form-control mb-2"
               value={form.confirm_password}
-              required
             />
           </div>
           <div className="submit-btn mt-4">

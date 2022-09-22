@@ -8,6 +8,6 @@ const updateProfile = async (data) => axios
     }
     return false;
   })
-  .catch((error) => console.log(error));
+  .catch((error) => error);
 
 export default updateProfile;
