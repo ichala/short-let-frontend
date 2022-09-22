@@ -18,8 +18,7 @@ function ChooseDate({ setAvailableHalls, setDate, date }) {
                   </blockquote>
                   <figcaption className="blockquote-footer text-white">
                     <cite className="text-white">
-                      Choose your date and we will list the available halls
-                      for you
+                      Choose a date to see available halls
                     </cite>
                   </figcaption>
                 </figure>
