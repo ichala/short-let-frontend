@@ -5,14 +5,7 @@ import RequestModal from './RequestModal';
 
 const ManageRequests = () => {
   const [requests, setRequests] = useState(null);
-  const [request, setRequest] = useState('');
-  const [open, setOpen] = useState(false);
   const [error, setError] = useState('');
-
-  const requestInfo = (data) => {
-    setRequest(data);
-    setOpen(true);
-  };
 
   useEffect(() => {
     fetchRequests(setError, setRequests);
@@ -52,13 +45,12 @@ const ManageRequests = () => {
             <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
             <td>{request.reserve_date}</td>
             <td>
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => requestInfo(request)}>Manage</button>
+              <RequestModal request={request} />
             </td>
           </tr>
           ))}
         </tbody>
       </table>
-      { open && <RequestModal request={request} />}
     </div>
   );
 };
