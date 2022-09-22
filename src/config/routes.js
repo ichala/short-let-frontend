@@ -3,6 +3,7 @@ import PrivateRoutes from '../components/Auth/PrivateRoutes';
 import Dashboard from '../Pages/Admin/Dashboard/Dashboard';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
+import Hall from '../Pages/Hall';
 import Home from '../Pages/Home/Home';
 import MyReservations from '../Pages/Users/MyReservations';
 import Profile from '../Pages/Users/Profile';
@@ -40,6 +41,10 @@ const routesConfig = [
       {
         path: '/admin/dashboard',
         element: <Dashboard />,
+      },
+      {
+        path: '/admin/halls',
+        element: <Hall />,
       },
     ],
   },
