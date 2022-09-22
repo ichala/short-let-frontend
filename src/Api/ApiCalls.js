@@ -1,7 +1,6 @@
 import axios from '../config/axios';
 import { isLoggedIn, Login } from '../redux/slices/auth';
 
-
 export default async function UserLogin(data, dispatch, error, setLoading) {
   await axios.post('/login', data).then((res) => {
     if (res.status === 200) {
@@ -35,4 +34,3 @@ export async function UserSignUp(data, dispatch, error, setLoading) {
     setLoading(false);
   });
 }
-
