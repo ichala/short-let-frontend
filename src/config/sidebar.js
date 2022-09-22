@@ -7,7 +7,6 @@ import {
   FaBuilding,
   FaRegChartBar,
   FaBookOpen,
-  FaBuilding,
 } from 'react-icons/fa';
 
 const menuItem = [
@@ -45,7 +44,7 @@ const menuItem = [
     end: false,
     protected: true,
   },
-  { 
+  {
     path: '/my-reservations',
     name: 'My Reservations',
     icon: <FaClipboard />,
