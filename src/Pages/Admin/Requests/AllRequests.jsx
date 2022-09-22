@@ -26,7 +26,42 @@ const AllRequests = () => {
   }
 
   return (
-    <div />
+    <div className="container">
+      <div className="row">
+        <div className="col-12 mt-5">
+          <h1 className="text-center">All Requests</h1>
+          <h4 className="text-center mt-5 mb-5">Here you can see all requests</h4>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <table className="table table-responsive text-center table-condensed mt-4 mb-5">
+            <thead className="align-middle table-headeri active">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th className="d-none d-lg-block" scope="col">Email</th>
+                <th scope="col">Hall</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody className="align-middle bg-light">
+              {requests.map((request) => (
+                <tr key={request.id}>
+                  <td>{request.user.first_name}</td>
+                  <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
+                  <td>{request.reserve_date}</td>
+                  <td>{request.hall.name}</td>
+                  <td>{request.hall.cost}</td>
+                  <td>{request.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 };
 
