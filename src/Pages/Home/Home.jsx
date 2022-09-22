@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 const Thumbnail = ({ arr, image, index }) => {
   return (<div className="tumbnail">
     {
@@ -71,7 +70,7 @@ function Home() {
 
   return (
     <div className="home">
-      <h1>SlideShow</h1>
+      <h2>Halls You Can choose from</h2>
       <Slideshow
         imgs={[
           'https://images.pexels.com/photos/265884/pexels-photo-265884.jpeg?cs=srgb&dl=pexels-pixabay-265884.jpg&fm=jpg',
