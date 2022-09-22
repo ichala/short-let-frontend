@@ -5,6 +5,7 @@ import {
   FaUser,
   FaRegChartBar,
   FaBookOpen,
+  FaBuilding,
 } from 'react-icons/fa';
 
 const menuItem = [
@@ -41,6 +42,14 @@ const menuItem = [
     icon: <FaBookOpen />,
     end: false,
     protected: true,
+  },
+  {
+    path: '/admin/halls',
+    name: 'Halls',
+    icon: <FaBuilding />,
+    end: false,
+    protected: true,
+    admin: true,
   },
   {
     path: '/admin/dashboard',
