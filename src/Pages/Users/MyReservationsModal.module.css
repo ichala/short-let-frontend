@@ -1,3 +1,9 @@
 .table {
   background-color: rgba(151, 191, 15, 0.2);
 }
+
+.status {
+  display: inline-block;
+  width: 6.5rem !important;
+  padding: 0.2rem 1rem;
+}
