@@ -6,10 +6,12 @@ import RequestModal from './RequestModal';
 const ManageRequests = () => {
   const [requests, setRequests] = useState(null);
   const [error, setError] = useState('');
+  const [answered, setAnswered] = useState(false);
 
   useEffect(() => {
     fetchRequests(setError, setRequests);
-  }, []);
+    setAnswered(false);
+  }, [answered]);
 
   if (!requests) {
     return (
@@ -51,7 +53,7 @@ const ManageRequests = () => {
               <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
               <td>{request.reserve_date}</td>
               <td>
-                <RequestModal request={request} />
+                <RequestModal request={request} setAnswered={setAnswered} />
               </td>
             </tr>
           ))}
