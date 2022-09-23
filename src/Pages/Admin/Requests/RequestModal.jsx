@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import { manageRequest } from '../../../Api/admins/requests/manageRequests';
 import Modal from '../../../components/Modal';
 
@@ -26,6 +27,12 @@ const RequestModal = (props) => {
       manageRequest({ ...data });
       setClose(true);
       setAnswered(true);
+      Swal.fire({
+        icon: 'success',
+        title: 'Request answered',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
