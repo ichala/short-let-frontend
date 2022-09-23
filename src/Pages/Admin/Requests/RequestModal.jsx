@@ -68,8 +68,8 @@ const RequestModal = (props) => {
           </div>
         </form>
         <div className="text-center d-flex justify-content-center gap-3 mb-2">
-          <button type="button" className="btn btn-success" value="Confirm" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
-          <button type="button" className="btn btn-danger" value="Refuse" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
+          <button type="button" className="btn btn-success" value="Confirm" data-bs-dismiss="modal" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
+          <button type="button" className="btn btn-danger" value="Refuse" data-bs-dismiss="modal" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
         </div>
       </Modal>
     </div>
