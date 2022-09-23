@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
-import fetchRequests from '../../../Api/admins/requests/manageRequests';
+import { allRequests } from '../../../Api/admins/requests/manageRequests';
 
 const AllRequests = () => {
   const [requests, setRequests] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchRequests(setError, setRequests);
+    allRequests(setError, setRequests);
   }, []);
 
   if (!requests) {
