@@ -31,11 +31,6 @@ function HomeSlider({ Halls }) {
             <div className={`card-img-overlay ${styles.overlay}`}>
               <h5 className="card-title">{hall.name}</h5>
               <p className="card-text">{hall.description}</p>
-              <p className="card-text">
-                Added at
-                {' '}
-                {hall.created_at}
-              </p>
             </div>
           </div>
         </SwiperSlide>
