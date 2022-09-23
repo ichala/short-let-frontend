@@ -7,6 +7,7 @@ const RequestModal = (props) => {
 
   const [message, setMessage] = useState('');
   const [close, setClose] = useState(false);
+  const [alert, setAlert] = useState('');
 
   const messageData = (e) => {
     setMessage(e.target.value);
@@ -19,8 +20,13 @@ const RequestModal = (props) => {
       text: message,
     };
     setMessage('');
-    manageRequest({ ...data });
-    setClose(true);
+    if (message === '') {
+      const alertMessage = 'Please enter a message';
+      setAlert(alertMessage);
+    } else {
+      manageRequest({ ...data });
+      setClose(true);
+    }
   };
 
   return (
@@ -65,11 +71,12 @@ const RequestModal = (props) => {
         <form>
           <div className="mb-3">
             <textarea className="form-control" id="message-text" value={message} onChange={(e) => messageData(e)} placeholder="Insert your message" />
+            <small className="text-danger">{alert}</small>
           </div>
         </form>
         <div className="text-center d-flex justify-content-center gap-3 mb-2">
-          <button type="button" className="btn btn-success" value="Confirm" data-bs-dismiss="modal" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
-          <button type="button" className="btn btn-danger" value="Refuse" data-bs-dismiss="modal" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
+          <button type="button" className="btn btn-success" value="Confirm" id={request.id} onClick={(e) => answerRequest(e)}>Approve</button>
+          <button type="button" className="btn btn-danger" value="Refuse" id={request.id} onClick={(e) => answerRequest(e)}>Reject</button>
         </div>
       </Modal>
     </div>
