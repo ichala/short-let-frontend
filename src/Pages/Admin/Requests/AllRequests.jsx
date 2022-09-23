@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import { allRequests } from '../../../Api/admins/requests/manageRequests';
+import classes from '../../Users/MyReservationsModal.module.css';
 
 const AllRequests = () => {
   const [requests, setRequests] = useState(null);
@@ -42,23 +43,23 @@ const AllRequests = () => {
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
                 <th className="d-none d-lg-block" scope="col">Email</th>
-                <th scope="col">Hall</th>
-                <th scope="col">Cost</th>
+                <th scope="col" className="d-none d-lg-table-cell">Hall</th>
+                <th scope="col" className="d-none d-lg-table-cell">Cost</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody className="align-middle bg-light">
               {requests.map((request) => (
                 <tr key={request.id}>
-                  <td>{request.user.first_name}</td>
-                  <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
                   <td>{request.reserve_date}</td>
-                  <td>{request.hall.name}</td>
-                  <td>{request.hall.cost}</td>
+                  <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
+                  <td>{request.user.first_name}</td>
+                  <td className="d-none d-lg-table-cell">{request.hall.name}</td>
+                  <td className="d-none d-lg-table-cell">{request.hall.cost}</td>
                   <td>
-                    {request.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>
-                      : request.status === 'Confirmed' ? <span className="bg-success text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>
-                        : <span className="bg-danger text-white fw-semibold rounded m-2 py-1 px-1">{request.status}</span>}
+                    {request.status === 'Pending' ? <span className={`bg-warning text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>
+                      : request.status === 'Confirmed' ? <span className={`bg-success text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>
+                        : <span className={`bg-danger text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>}
                   </td>
                 </tr>
               ))}
