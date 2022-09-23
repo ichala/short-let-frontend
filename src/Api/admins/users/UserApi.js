@@ -11,7 +11,7 @@ export const fetchUsers = async () => {
     })
     .catch((e) => console.log(e.response.data));
   return users;
-}
+};
 
 export const addUser = async (data) => axios
   .post('/admin/users', data)
