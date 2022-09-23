@@ -1,0 +1,37 @@
+.card_bg {
+  background: var(--main);
+}
+
+input,
+select {
+  max-width: 280px;
+}
+
+button {
+  width: 180px;
+}
+
+.text_main {
+  color: var(--text-primary);
+}
+
+.fade_in { animation: fadeIn 1.5s; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hall_image {
+  height: 300px;
+}
+
+.hall_card {
+  min-height: 300px;
+  min-width: 100%;
+  background-color: rgba(63, 98, 18, 0.6);
+}
+
+.button {
+  background-color: #a3e635;
+}
