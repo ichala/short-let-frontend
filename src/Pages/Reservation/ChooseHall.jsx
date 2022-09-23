@@ -11,7 +11,6 @@ function ChooseHall({
   const [error, setError] = useState(null);
   const [loading, setloading] = useState(false);
   const [hall, setHall] = useState(availableHalls[0]);
-  const [update, setUpdate] = useState(false);
   function ChooseHall(id) {
     availableHalls.forEach((hall) => {
       if (hall.id === Number(id)) {
@@ -21,7 +20,6 @@ function ChooseHall({
   }
   function ConfirmReservation() {
     Swal.fire({
-
       title: `Do you want to confirm the reservation ? <br> <p class="mt-2 display-5"> ${hall.name} </p> <br><p class="display-6">  Cost: ${Number(hall.cost)}$ </p>`,
       showDenyButton: true,
       confirmButtonText: 'Confirm',
@@ -30,18 +28,26 @@ function ChooseHall({
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        PostReservation(setError, date, setloading, hall, setSaved);
-        setUpdate(!update);
-        if (!error) {
-          Swal.fire('Reservation Request Submitted', '', 'success');
-        } else {
-          Swal.fire('You already made this reservation', '', 'warning');
-        }
+        PostReservation(date, hall).then((res) => {
+          if (res.status === 200) {
+            Swal.fire('Reservation Request Submitted', '', 'success');
+            setSaved(true);
+          }
+        }).catch((e) => {
+          if (e.toJSON().message === 'Network Error') {
+            Swal.fire('No Internet Or Server is not running', '', 'danger');
+            setloading(false);
+          } else {
+            Swal.fire(e.response.data.message, '', 'info');
+            setloading(false);
+          }
+        });
       } else if (result.isDenied) {
         Swal.fire('Reservation Canceled', '', 'info');
       }
     });
   }
+
   return (
     <section className="vh-75 m-auto">
       <div className="container py-5 mt-5 h-100">
