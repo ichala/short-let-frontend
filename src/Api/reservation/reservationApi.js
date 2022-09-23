@@ -14,7 +14,7 @@ export const PostReservation = (setError, date, setloading, hall, setSaved) => {
         setError({ message: 'No Internet Or Server is not running' });
         setloading(false);
       } else {
-        setError(e.response.data.error);
+        setError(e.response.data.message);
         setloading(false);
       }
     });

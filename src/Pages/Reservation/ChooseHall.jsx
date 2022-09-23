@@ -11,6 +11,7 @@ function ChooseHall({
   const [error, setError] = useState(null);
   const [loading, setloading] = useState(false);
   const [hall, setHall] = useState(availableHalls[0]);
+  const [update, setUpdate] = useState(false);
   function ChooseHall(id) {
     availableHalls.forEach((hall) => {
       if (hall.id === Number(id)) {
@@ -30,7 +31,12 @@ function ChooseHall({
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         PostReservation(setError, date, setloading, hall, setSaved);
-        Swal.fire('Reservation Request Submitted', '', 'success');
+        setUpdate(!update);
+        if (!error) {
+          Swal.fire('Reservation Request Submitted', '', 'success');
+        } else {
+          Swal.fire('You already made this reservation', '', 'warning');
+        }
       } else if (result.isDenied) {
         Swal.fire('Reservation Canceled', '', 'info');
       }
