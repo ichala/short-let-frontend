@@ -38,13 +38,12 @@ const Profile = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(form.password);
-    console.log(form);
     if (form.password !== form.confirm_password) {
       setError('Make sure the password and password confirmation fields are the same.');
     } else {
       updateProfile(form)
         .then(() => {
+          setForm({ ...form, password: '', confirm_password: '' });
           Swal.fire({
             title: 'Updated',
             text: 'Your profile has been updated successfully.',
