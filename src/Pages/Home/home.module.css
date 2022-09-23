@@ -1,0 +1,49 @@
+.logo {
+  width: 400px;
+  height: 300px;
+}
+
+.card_bg {
+  background: var(--main);
+}
+
+.hall_image {
+  height: 500px;
+  width: 500px;
+}
+
+.pie_chart_container {
+  max-height: 300px !important;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.671);
+}
+
+.text_main {
+  color: var(--main);
+}
+
+.hall_card {
+  height: 300px !important;
+}
+
+.featurette_divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+.featurette_heading {
+  letter-spacing: -0.05rem;
+}
+
+@media (min-width: 40em) {
+  .featurette_heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette_heading {
+    margin-top: 7rem;
+  }
+}

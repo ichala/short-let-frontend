@@ -20,7 +20,6 @@ function ChooseHall({
   }
   function ConfirmReservation() {
     Swal.fire({
-
       title: `Do you want to confirm the reservation ? <br> <p class="mt-2 display-5"> ${hall.name} </p> <br><p class="display-6">  Cost: ${Number(hall.cost)}$ </p>`,
       showDenyButton: true,
       confirmButtonText: 'Confirm',
@@ -29,13 +28,26 @@ function ChooseHall({
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        PostReservation(setError, date, setloading, hall, setSaved);
-        Swal.fire('Reservation Request Submitted', '', 'success');
+        PostReservation(date, hall).then((res) => {
+          if (res.status === 200) {
+            Swal.fire('Reservation Request Submitted', '', 'success');
+            setSaved(true);
+          }
+        }).catch((e) => {
+          if (e.toJSON().message === 'Network Error') {
+            Swal.fire('No Internet Or Server is not running', '', 'danger');
+            setloading(false);
+          } else {
+            Swal.fire(e.response.data.message, '', 'info');
+            setloading(false);
+          }
+        });
       } else if (result.isDenied) {
         Swal.fire('Reservation Canceled', '', 'info');
       }
     });
   }
+
   return (
     <section className="vh-75 m-auto">
       <div className="container py-5 mt-5 h-100">
