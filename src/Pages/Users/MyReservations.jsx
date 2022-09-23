@@ -26,7 +26,7 @@ const MyReservations = () => {
 
   useEffect(() => {
     GetReservationStats(setError, setReservations);
-  }, [reservation, setReservations]);
+  }, [reservation]);
 
   if (!reservations) {
     return (
