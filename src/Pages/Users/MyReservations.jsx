@@ -26,7 +26,7 @@ const MyReservations = () => {
 
   useEffect(() => {
     GetReservationStats(setError, setReservations);
-  }, [reservation, reservations]);
+  }, [reservation]);
 
   if (!reservations) {
     return (
@@ -68,7 +68,7 @@ const MyReservations = () => {
             <tr>
               <th scope="col">Date</th>
               <th scope="col">Hall</th>
-              <th scope="col">Status</th>
+              <th scope="col" className="d-none d-lg-block">Status</th>
               <th scope="col">Details</th>
             </tr>
           </thead>
@@ -77,10 +77,10 @@ const MyReservations = () => {
               <tr key={reservation.id}>
                 <td>{reservation.reserve_date}</td>
                 <td>{reservation.hall.name}</td>
-                <td>
-                  {reservation.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded m-2 py-1 px-1">{reservation.status}</span>
-                    : reservation.status === 'Approved' ? <span className="bg-success text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>
-                      : <span className="bg-danger text-white fw-semibold rounded m-2 py-1">{reservation.status}</span>}
+                <td className="d-none d-lg-block">
+                  {reservation.status === 'Pending' ? <span className={`bg-warning text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>
+                    : reservation.status === 'Confirmed' ? <span className={`bg-success text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>
+                      : <span className={`bg-danger text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>}
                 </td>
                 <td>
                   <MyReservationsModal
