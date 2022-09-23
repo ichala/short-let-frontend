@@ -3,12 +3,11 @@ import { manageRequest } from '../../../Api/admins/requests/manageRequests';
 import Modal from '../../../components/Modal';
 
 const RequestModal = (props) => {
-  const { request } = props;
+  const { request, setAnswered } = props;
 
   const [message, setMessage] = useState('');
   const [close, setClose] = useState(false);
   const [alert, setAlert] = useState('');
-
   const messageData = (e) => {
     setMessage(e.target.value);
   };
@@ -26,6 +25,7 @@ const RequestModal = (props) => {
     } else {
       manageRequest({ ...data });
       setClose(true);
+      setAnswered(true);
     }
   };
 
