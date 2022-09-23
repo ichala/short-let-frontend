@@ -45,15 +45,15 @@ const ManageRequests = () => {
           </tr>
         </thead>
         <tbody className="align-middle bg-light">
-          {requests.map((request) => request.status === 'Pending' && (
-          <tr key={request.id}>
-            <td>{request.user.first_name}</td>
-            <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
-            <td>{request.reserve_date}</td>
-            <td>
-              <RequestModal request={request} />
-            </td>
-          </tr>
+          {requests.map((request) => (
+            <tr key={request.id}>
+              <td>{request.user.first_name}</td>
+              <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
+              <td>{request.reserve_date}</td>
+              <td>
+                <RequestModal request={request} />
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
