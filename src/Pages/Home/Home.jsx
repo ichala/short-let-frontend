@@ -39,7 +39,7 @@ function Home() {
         <HomeSlider Halls={Halls} />
       </div>
 
-      <div className="row">
+      <div className="row mt-4">
         <Features />
       </div>
     </>
