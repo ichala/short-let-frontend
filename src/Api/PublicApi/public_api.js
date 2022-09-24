@@ -22,8 +22,8 @@ export async function GetHall(error, setHall, id) {
   }).catch((e) => {
     if (e.toJSON().message === 'Network Error') {
       error('No Internet Or Server is not running');
-    } else {
-      error(e.response.data.error);
+    } else if (e.response.status === 404) {
+      error('404 : Hall Not Found');
     }
   });
 }
