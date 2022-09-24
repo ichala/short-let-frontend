@@ -1,0 +1,24 @@
+.hall_container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+
+}
+
+.image {
+  width: 400px;
+  height: 300px;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .hall_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    width: 320px;
+    height: 300px;
+  }
+}
