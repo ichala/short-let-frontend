@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GetHalls from '../../Api/PublicApi/public_api';
 import Styles from './halls.module.css';
 
@@ -39,12 +40,15 @@ function Halls() {
               alt={hall.name}
               className={`${Styles.image} rounded mb-2`}
             />
-            <h5>{hall.name}</h5>
-            <p>
-              Capacity:
-              {' '}
-              {hall.capacity}
-            </p>
+            <h5 className="fw-semibold fst-italic">{hall.name}</h5>
+            <Link to={`/halls/${hall.id}`}>
+              <button
+                type="button"
+                className={`${Styles.button} btn btn-dark mb-5`}
+              >
+                view hall
+              </button>
+            </Link>
           </div>
         ))}
       </div>
