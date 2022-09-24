@@ -1,43 +1,32 @@
 import axios from '../../../config/axios';
 
-export const fetchUsers = async () => {
-  let users = [];
+export const fetchUsers = async (setError, setUsers) => {
+  const users = [];
   await axios
-    .get('/users')
+    .get('/admin/users')
     .then((response) => {
       if (response.status === 200) {
-        users = response.data;
+        setUsers(response.data);
       }
     })
-    .catch((e) => console.log(e.response.data));
+    .catch((e) => setError(e.response.data));
   return users;
 };
 
-export const addUser = async (data) => axios
-  .post('/admin/users', data)
-  .then((response) => {
-    if (response.status === 200) {
-      return response;
-    }
-    return null;
-  })
-  .catch((e) => console.log(e.response.data));
-
 export const updateUser = async (data) => axios
-  .patch('/admin/users', data)
+  .patch('/admin/user/update', data)
   .then((response) => {
     if (response.status === 200) {
-      return response;
+      console.log(response.status);
     }
-    return false;
   })
   .catch((e) => console.log(e.response.data));
 
 export const removeUser = async (id) => axios
-  .delete(`/admin/users/${id}`)
+  .delete('/admin/user/destroy', { data: { id } })
   .then((response) => {
     if (response.status === 200) {
-      return response.data;
+      console.log(response);
     }
     return null;
   })

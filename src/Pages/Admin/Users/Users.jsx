@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
-import GetUsers from '../../../Api/admins/users/UserApi';
+import { fetchUsers } from '../../../Api/admins/users/UserApi';
 import UserManagement from './UserManagement';
 
 const conditionalRowStyles = [
@@ -42,7 +42,7 @@ function Users() {
   const [Users, setUsers] = useState(null);
   const [Error, setError] = useState(null);
   useEffect(() => {
-    GetUsers(setError, setUsers);
+    fetchUsers(setError, setUsers);
   }, []);
   if (!Users) {
     return (
