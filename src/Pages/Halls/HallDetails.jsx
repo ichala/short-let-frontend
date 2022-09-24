@@ -5,10 +5,13 @@ import { GetHall } from '../../Api/PublicApi/public_api';
 function HallDetails() {
   const { id } = useParams();
   const [Hall, setHall] = useState(null);
-  const [Error, setError] = useState(second);
+  const [Error, setError] = useState(false);
   useEffect(() => {
     GetHall(setError, setHall, id);
   }, []);
+
+  console.log(Hall);
+  console.log(Error);
 
   return (
     <div>HallDetails</div>
