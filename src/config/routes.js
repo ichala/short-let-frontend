@@ -54,7 +54,7 @@ const routesConfig = [
         element: <Hall />,
       },
       {
-        path: '/admin/users',
+        path: '/admin/dashboard/users',
         element: <Users />,
       },
       {
