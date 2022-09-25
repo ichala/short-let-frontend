@@ -1,8 +1,21 @@
 import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { updateHall } from '../../Api/admins/halls/api';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import { updateHall, removeHall } from '../../Api/admins/halls/api';
+
+const deleteHall = (id) => {
+  removeHall(id).then(() => {
+    // setChanged(true);
+    Swal.fire({
+      title: 'Deleted',
+      text: 'Hall has been successfully deleted!',
+      icon: 'Error',
+      confirmButtonText: 'Okay',
+    });
+  });
+  // setChanged(false);
+};
 
 const columns = [
   {
@@ -25,8 +38,13 @@ const columns = [
     selector: (row) => row.description,
   },
   {
-    name: 'Action',
-    selector: (row) => row.action,
+    name: 'Actions',
+    button: true,
+    cell: (data) => (
+      <button className="btn me-4" onClick={() => deleteHall(data.id)} type="button">
+        <FaTrash className="text-danger" />
+      </button>
+    ),
   },
 ];
 
@@ -47,25 +65,12 @@ const ExpandedComponent = ({ data }) => {
     });
   };
 
-  // const deleteHall = (id) => {
-  //   removeHall(id).then(() => {
-  //     setChanged(true);
-  //     Swal.fire({
-  //       title: 'Deleted',
-  //       text: 'Hall has been successfully deleted!',
-  //       icon: 'Error',
-  //       confirmButtonText: 'Okay',
-  //     });
-  //   });
-  //   setChanged(false);
-  // };
-
   const {
     name, capacity, cost, image, description,
   } = form;
 
   return (
-    <form onSubmit={submit} className="col-md-12 ps-3">
+    <form onSubmit={submit} className="col-md-12 px-3">
       <div className="form-group mb-2">
         <label htmlFor="name" className="fomr-label w-100">
           Name:
@@ -144,10 +149,10 @@ const ExpandedComponent = ({ data }) => {
           />
         </label>
       </div>
-      <div className="d-flex justiy-between">
-        <button type="submit" className="btn btn-success">
+      <div className="mb-4">
+        <button type="submit" className="btn btn-sm btn-outline-secondary">
           <FaEdit className="mb-1 me-2" />
-          Submit
+          Save
         </button>
       </div>
     </form>
