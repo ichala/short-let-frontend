@@ -1,7 +1,7 @@
 import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-// import { FaEdit } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
 import { updateHall } from '../../Api/admins/halls/api';
 
 const columns = [
@@ -46,6 +46,19 @@ const ExpandedComponent = ({ data }) => {
       });
     });
   };
+
+  // const deleteHall = (id) => {
+  //   removeHall(id).then(() => {
+  //     setChanged(true);
+  //     Swal.fire({
+  //       title: 'Deleted',
+  //       text: 'Hall has been successfully deleted!',
+  //       icon: 'Error',
+  //       confirmButtonText: 'Okay',
+  //     });
+  //   });
+  //   setChanged(false);
+  // };
 
   const {
     name, capacity, cost, image, description,
@@ -133,6 +146,7 @@ const ExpandedComponent = ({ data }) => {
       </div>
       <div className="d-flex justiy-between">
         <button type="submit" className="btn btn-success">
+          <FaEdit className="mb-1 me-2" />
           Submit
         </button>
       </div>
