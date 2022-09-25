@@ -36,14 +36,16 @@ const columns = [
     sortable: true,
   },
 ];
-const ExpandedComponent = ({ data }) => <UserManagement user={data} />;
 
 function Users() {
   const [Users, setUsers] = useState(null);
   const [Error, setError] = useState(null);
+  const [Updated, setUpdated] = useState(false);
+  const ExpandedComponent = ({ data }) => <UserManagement user={data} setUpdated={setUpdated} />;
   useEffect(() => {
     fetchUsers(setError, setUsers);
-  }, []);
+    setUpdated(false);
+  }, [Updated]);
   if (!Users) {
     return (
       <>

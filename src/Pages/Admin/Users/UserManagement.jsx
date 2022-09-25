@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import { removeUser, updateUser } from '../../../Api/admins/users/UserApi';
 
-function UserManagement({ user }) {
+function UserManagement({ user, setUpdated }) {
   const [Loading] = useState(false);
   const [Role, setRole] = useState(user.role);
-  function UpdateUserData(e) {
-    e.preventDefault();
+
+  function UpdateUserData() {
     const UpdateUser = user;
     UpdateUser.role = Role;
-    updateUser(UpdateUser);
-    window.location.reload();
+    updateUser(UpdateUser).then((response) => {
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'User Updated',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setUpdated(true);
+      }
+    })
+      .catch((e) => Swal.fire({
+        icon: 'error',
+        title: e.response.status,
+        showConfirmButton: false,
+        timer: 1500,
+      }));
   }
   return (
     <div className="row p-3">
@@ -17,7 +33,8 @@ function UserManagement({ user }) {
         <form
           className="p-3"
           onSubmit={(e) => {
-            UpdateUserData(e);
+            UpdateUserData();
+            e.preventDefault();
           }}
         >
           <div className="mb-3">
@@ -65,8 +82,23 @@ function UserManagement({ user }) {
                     type="button"
                     onClick={(e) => {
                       e.preventDefault();
-                      removeUser(user.id);
-                      window.location.reload();
+                      removeUser(user.id).then((response) => {
+                        if (response.status === 200) {
+                          Swal.fire({
+                            icon: 'success',
+                            title: 'User Removed',
+                            showConfirmButton: false,
+                            timer: 1500,
+                          });
+                          setUpdated(true);
+                        }
+                      })
+                        .catch((e) => Swal.fire({
+                          icon: 'error',
+                          title: e.response.status,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        }));
                     }}
                     className="btn btn-danger m-2"
                   >
