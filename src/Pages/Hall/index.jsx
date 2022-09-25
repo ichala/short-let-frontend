@@ -22,7 +22,7 @@ const Hall = () => {
         <h2>Halls list</h2>
         <Create setChanged={setChanged} />
       </div>
-      <HallsTable halls={halls} />
+      <HallsTable halls={halls} setChanged={setChanged} />
     </div>
   );
 };

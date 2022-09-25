@@ -3,22 +3,21 @@ import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { updateHall } from '../../../Api/admins/halls/api';
 
-const UpdateForm = ({ data }) => {
+const UpdateForm = ({ data, setChanged }) => {
   const [form, setForm] = useState(data);
-  const [render, setRender] = useState(false);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = (e) => {
     e.preventDefault();
     updateHall(form).then(() => {
+      setChanged(true);
       Swal.fire({
         title: 'updated',
         text: 'Hall has been successfully updated!',
         icon: 'info',
         confirmButtonText: 'Cool',
       });
-      setRender(!render);
     });
   };
 
