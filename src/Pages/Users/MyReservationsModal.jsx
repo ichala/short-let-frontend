@@ -25,7 +25,7 @@ const MyReservationsModal = ((props) => {
 
   return (
     <Modal
-      name={reservation.hall.name}
+      name={`editHall${reservation.id}`}
       icon=""
       buttonText="More"
       title=""
@@ -44,7 +44,7 @@ const MyReservationsModal = ((props) => {
               <span className="fw-bold text-secondary">Status:</span>
               {' '}
               {status === 'Pending' ? <span className="text-warning fw-semibold">{status}</span>
-                : status === 'Approved' ? <span className="text-success fw-semibold">{status}</span>
+                : status === 'Confirmed' ? <span className="text-success fw-semibold">{status}</span>
                   : <span className="text-danger fw-semibold">{status}</span>}
             </p>
             <p className="card-text mb-1">

@@ -59,10 +59,10 @@ function Dashboard() {
           <Link type="button" className="btn btn btn-outline-success" to="/admin/users"> Manage Users</Link>
         </div>
         <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
-          <Link type="button" className="btn btn btn-outline-success" to="/"> Manage Reservations</Link>
+          <Link type="button" className="btn btn btn-outline-success" to="/admin/dashboard/requests"> Manage Reservations</Link>
         </div>
         <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
-          <Link type="button" className="btn btn btn-outline-success" to="/"> Pending Reservations</Link>
+          <Link type="button" className="btn btn btn-outline-success" to="/admin/dashboard/pending-requests"> Pending Reservations</Link>
         </div>
         <div className="col-md-3 mt-1 col-12 d-flex justify-content-center align-content-center">
           <Link type="button" className="btn btn btn-outline-success" to="/admin/halls"> Manage Halls</Link>
