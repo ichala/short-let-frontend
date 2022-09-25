@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import { GetHall } from '../../Api/PublicApi/public_api';
@@ -11,7 +11,9 @@ function HallDetails() {
   const [Hall, setHall] = useState(null);
   const [Error, setError] = useState(null);
   const [loading, setloading] = useState(false);
-  const [date, setDate] = useState('');
+  const [Saved, setSaved] = useState(false);
+  const date = useRef(null);
+
   function ConfirmReservation() {
     setloading(true);
     Swal.fire({
@@ -23,10 +25,10 @@ function HallDetails() {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        PostReservation(date, Hall).then((res) => {
+        PostReservation(date.current.value, { id }).then((res) => {
           if (res.status === 200) {
             Swal.fire('Reservation Request Submitted', '', 'success');
-            setloading(false);
+            setSaved(true);
           }
         }).catch((e) => {
           if (e.toJSON().message === 'Network Error') {
@@ -46,6 +48,9 @@ function HallDetails() {
   useEffect(() => {
     GetHall(setError, setHall, id);
   }, []);
+  if (Saved) {
+    return <Navigate to="/my-reservations" replace />;
+  }
   if (!Hall) {
     return (
       <>
@@ -101,31 +106,16 @@ function HallDetails() {
 
                 </tbody>
               </table>
-
+              <p className="text-dark">
+                {Hall.description}
+              </p>
             </div>
           </div>
           <div className="col-md-6">
-            <div className={`h-100 p-5 text-white  border rounded-3 ${styles.bg_main}`}>
-              <p>
-                {Hall.description}
-              </p>
-              <button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Book Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-
-            <div className={`card-body p-4 rounded-3 ${styles.bg_main}`}>
-              <figure className="text-center text-sm ">
-                <blockquote className="blockquote text-center">
-                  <h3 className="display-4 text-white">Choose a date</h3>
-                </blockquote>
-
-              </figure>
+            <div className={`h-100 p-5 text-white text-center  border rounded-3 ${styles.bg_main}`}>
+              <h5 className="display-6">
+                Choose a Date
+              </h5>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -133,17 +123,13 @@ function HallDetails() {
                 }}
                 className="flex-nowrap d-flex justify-content-center align-items-center flex-column "
               >
-                {/* <p className="text-danger mb-1 ">
-                  {error && error.message}
-                </p> */}
+
                 <input
                   type="date"
                   className="form-control "
                   required
-                  onChange={(e) => {
-                    setDate(e.target.value);
-                    setError(null);
-                  }}
+                  ref={date}
+                  onChange={() => setError(null)}
                 />
                 {loading ? (
                   <div
@@ -151,18 +137,20 @@ function HallDetails() {
                     role="status"
                   />
                 ) : (
-                  <div className="btn-group mt-2" role="group" aria-label="Basic example">
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" className="btn btn-success ">Reserve Now</button>
+                  <div className="font-weight-bold">
+                    <button type="submit" className="btn btn-dark mt-3">
+                      Book Now
+                    </button>
                   </div>
                 )}
 
               </form>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
+
     </>
   );
 }

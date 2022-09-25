@@ -44,7 +44,7 @@ function Halls() {
             <Link to={`/halls/${hall.id}`}>
               <button
                 type="button"
-                className={`${Styles.button} btn btn-dark mb-5`}
+                className={`${Styles.button} btn btn-success text-white mb-5`}
               >
                 view hall
               </button>
