@@ -53,7 +53,7 @@ const routesConfig = [
         path: '/admin/halls',
         element: <Hall />,
       },
-      
+      {
         path: '/admin/users',
         element: <Users />,
       },
