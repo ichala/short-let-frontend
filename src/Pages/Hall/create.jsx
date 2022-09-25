@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { addHall } from '../../Api/admins/halls/api';
 import Modal from '../../components/Modal';
+import './Hall.css';
 
 const Create = ({ setChanged }) => {
   const [close, setClose] = useState(false);
@@ -42,7 +43,7 @@ const Create = ({ setChanged }) => {
       buttonText="Add Hall"
       title="Add a new hall"
       close={close}
-      btnClass="btn-outline-success"
+      btnClass="btn-outline-success btn-add-hall"
     >
       <form onSubmit={submit}>
         <div className="form-group mb-2">

@@ -18,7 +18,7 @@ const Hall = () => {
 
   return (
     <div className="p-md-5">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center mb-2">
         <h2>Halls list</h2>
         <Create setChanged={setChanged} />
       </div>
