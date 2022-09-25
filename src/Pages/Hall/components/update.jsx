@@ -1,8 +1,8 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
-import { updateHall } from '../../Api/admins/halls/api';
-import Modal from '../../components/Modal';
+import { updateHall } from '../../../Api/admins/halls/api';
+import Modal from '../../../components/Modal';
 
 const Update = ({ data, setChanged }) => {
   const [close, setClose] = useState(false);

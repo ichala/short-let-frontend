@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchHalls } from '../../Api/admins/halls/api';
-import Create from './create';
-import HallsTable from './HallsTable';
+import Create from './components/create';
+import HallsTable from './components/HallsTable';
 
 const Hall = () => {
   const [halls, setHalls] = useState([]);

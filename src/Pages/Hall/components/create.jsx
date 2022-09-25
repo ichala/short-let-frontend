@@ -1,9 +1,9 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { addHall } from '../../Api/admins/halls/api';
-import Modal from '../../components/Modal';
-import './Hall.css';
+import { addHall } from '../../../Api/admins/halls/api';
+import Modal from '../../../components/Modal';
+import '../Hall.css';
 
 const Create = ({ setChanged }) => {
   const [close, setClose] = useState(false);

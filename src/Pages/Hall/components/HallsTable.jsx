@@ -1,8 +1,8 @@
 import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
 import { FaTrash } from 'react-icons/fa';
-import { removeHall } from '../../Api/admins/halls/api';
-import UpdateForm from './components/UpdateForm';
+import { removeHall } from '../../../Api/admins/halls/api';
+import UpdateForm from './UpdateForm';
 
 const HallsTable = ({ halls, setChanged }) => {
   const deleteHall = (id) => {
