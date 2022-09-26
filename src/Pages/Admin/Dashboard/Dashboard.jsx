@@ -79,6 +79,7 @@ function Dashboard() {
         <ReservationsChart stats={Stats.reservation_chart} />
         <HallsChart stats={Stats.halls_chart} />
       </div>
+
       <div className="row mt-2">
         <UserStatsTable stats={Stats.recent_stats.recent_users} />
         <ReservationStatsTable stats={Stats.recent_stats.recent_reservations} />
