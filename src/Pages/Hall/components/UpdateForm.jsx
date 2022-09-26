@@ -106,7 +106,7 @@ const UpdateForm = ({ data, setChanged }) => {
         </label>
       </div>
       <div className="mb-4">
-        <button type="submit" className="btn btn-sm btn-outline-secondary">
+        <button type="submit" className="btn btn-sm btn-success">
           <FaEdit className="mb-1 me-2" />
           Save
         </button>
