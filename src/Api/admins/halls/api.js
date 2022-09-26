@@ -8,8 +8,8 @@ export const fetchHalls = async () => {
       if (response.status === 200) {
         halls = response.data;
       }
-    })
-    .catch((e) => console.log(e.response.data));
+    });
+
   return halls;
 };
 
@@ -20,8 +20,7 @@ export const addHall = async (data) => axios
       return response;
     }
     return null;
-  })
-  .catch((e) => console.log(e.response.data));
+  });
 
 export const updateHall = async (data) => axios
   .patch('/admin/halls', data)
@@ -30,8 +29,7 @@ export const updateHall = async (data) => axios
       return response;
     }
     return false;
-  })
-  .catch((e) => console.log(e.response.data));
+  });
 
 export const removeHall = async (id) => axios
   .delete(`/admin/halls/${id}`)
@@ -40,5 +38,4 @@ export const removeHall = async (id) => axios
       return response.data;
     }
     return null;
-  })
-  .catch((e) => console.log(e.response.data));
+  });
