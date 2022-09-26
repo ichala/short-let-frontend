@@ -1,6 +1,7 @@
 import AdminRoutes from '../components/Auth/AdminRoutes';
 import PrivateRoutes from '../components/Auth/PrivateRoutes';
 import Dashboard from '../Pages/Admin/Dashboard/Dashboard';
+import Users from '../Pages/Admin/Users/Users';
 import AllRequests from '../Pages/Admin/Requests/AllRequests';
 import ManageRequests from '../Pages/Admin/Requests/ManageRequests';
 import Login from '../Pages/Auth/Login';
@@ -61,6 +62,10 @@ const routesConfig = [
       {
         path: '/admin/halls',
         element: <Hall />,
+      },
+      {
+        path: '/admin/dashboard/users',
+        element: <Users />,
       },
       {
         path: '/admin/dashboard/pending-requests',
