@@ -1,42 +1,49 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { updateHall } from '../../Api/admins/halls/api';
-import Modal from '../../components/Modal';
+import { FaPlus } from 'react-icons/fa';
+import { addHall } from '../../../Api/admins/halls/api';
+import Modal from '../../../components/Modal';
+import '../Hall.css';
 
-const Update = ({ data, setChanged }) => {
+const Create = ({ setChanged }) => {
   const [close, setClose] = useState(false);
+  const data = {
+    name: '',
+    capacity: 0,
+    cost: 0,
+    image: '',
+    description: '',
+  };
   const [form, setForm] = useState(data);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = (e) => {
     e.preventDefault();
-    updateHall(form).then(() => {
+    addHall(form).then(() => {
       setClose(true);
-      setChanged(true); // Send a signal to the parent class.
+      setChanged(true); // Send a signla to the parent class.
       Swal.fire({
-        title: 'updated',
-        text: 'Hall has been successfully updated!',
-        icon: 'info',
-        confirmButtonText: 'Cool',
+        title: 'Created',
+        text: 'Hall has been successfully created!',
+        icon: 'success',
+        confirmButtonText: 'Okay',
       });
     });
+    setForm(data);
     setClose(false); // Allow the hall to have the closing ability next time.
   };
-
   const {
     name, capacity, cost, image, description,
   } = form;
-
   return (
     <Modal
-      name={`editHall${form.id}`}
-      icon={<FaEdit />}
-      buttonText="Edit"
-      title="Update the hall"
+      name="newhall"
+      icon={<FaPlus />}
+      buttonText="Add Hall"
+      title="Add a new hall"
       close={close}
-      btnClass="btn-info btn-sm text-white"
+      btnClass="btn-outline-success btn-add-hall"
     >
       <form onSubmit={submit}>
         <div className="form-group mb-2">
@@ -124,4 +131,4 @@ const Update = ({ data, setChanged }) => {
   );
 };
 
-export default Update;
+export default Create;
