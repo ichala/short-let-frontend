@@ -59,14 +59,6 @@ const menuItem = [
     protected: true,
   },
   {
-    path: '/admin/halls',
-    name: 'Halls',
-    icon: <FaBuilding />,
-    end: false,
-    protected: true,
-    admin: true,
-  },
-  {
     path: '/admin/dashboard',
     name: 'Dashboard',
     icon: <FaRegChartBar />,

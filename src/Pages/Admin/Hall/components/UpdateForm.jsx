@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import { updateHall } from '../../../Api/admins/halls/api';
+import { updateHall } from '../../../../Api/admins/halls/api';
 
 const UpdateForm = ({ data, setChanged }) => {
   const [form, setForm] = useState(data);

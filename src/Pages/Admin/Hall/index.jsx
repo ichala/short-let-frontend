@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchHalls } from '../../Api/admins/halls/api';
+import { fetchHalls } from '../../../Api/admins/halls/api';
 import Create from './components/create';
 import HallsTable from './components/HallsTable';
 

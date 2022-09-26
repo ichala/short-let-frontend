@@ -6,7 +6,7 @@ import AllRequests from '../Pages/Admin/Requests/AllRequests';
 import ManageRequests from '../Pages/Admin/Requests/ManageRequests';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
-import Hall from '../Pages/Hall';
+import Hall from '../Pages/Admin/Hall';
 import HallDetails from '../Pages/Halls/HallDetails';
 import Halls from '../Pages/Halls/Halls';
 import Home from '../Pages/Home/Home';
@@ -60,7 +60,7 @@ const routesConfig = [
         element: <Dashboard />,
       },
       {
-        path: '/admin/halls',
+        path: '/admin/dashboard/halls',
         element: <Hall />,
       },
       {
