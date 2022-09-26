@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import { allRequests } from '../../../Api/admins/requests/manageRequests';
-import classes from '../../Users/MyReservationsModal.module.css';
 
 const AllRequests = () => {
   const [requests, setRequests] = useState(null);
@@ -57,9 +56,9 @@ const AllRequests = () => {
                   <td className="d-none d-lg-table-cell">{request.hall.name}</td>
                   <td className="d-none d-lg-table-cell">{request.hall.cost}</td>
                   <td>
-                    {request.status === 'Pending' ? <span className={`bg-warning text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>
-                      : request.status === 'Confirmed' ? <span className={`bg-success text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>
-                        : <span className={`bg-danger text-white fw-semibold rounded ${classes.status}`}>{request.status}</span>}
+                    {request.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded status">{request.status}</span>
+                      : request.status === 'Confirmed' ? <span className="bg-success text-white fw-semibold rounded status">{request.status}</span>
+                        : <span className="bg-danger text-white fw-semibold rounded status">{request.status}</span>}
                   </td>
                 </tr>
               ))}

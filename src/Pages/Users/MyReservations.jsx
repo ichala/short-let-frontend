@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import MyReservationsModal from './MyReservationsModal';
-import classes from './MyReservationsModal.module.css';
+import './MyReservationsModal.css';
 import GetReservationStats from '../../Api/myReservations/MyReservationsAPI';
+import MyReservationsTable from './MyReservationsTable';
 
 const MyReservations = () => {
   const [reservations, setReservations] = useState(null);
@@ -14,9 +14,7 @@ const MyReservations = () => {
 
   const hide = () => {
     const alert = (
-      <div className="alert alert-success">
-        You have successfully cancelled your reservation
-      </div>
+      <div className="alert alert-success">You have successfully cancelled your reservation</div>
     );
     setTimeout(() => {
       setDeleted(false);
@@ -40,7 +38,6 @@ const MyReservations = () => {
             {error}
           </div>
         )}
-
       </>
     );
   }
@@ -62,38 +59,13 @@ const MyReservations = () => {
         Below you can find details about all your reservations
       </h4>
       <div>
+        <MyReservationsTable
+          reservations={reservations}
+          setError={setError}
+          setReservation={setReservation}
+          setDeleted={setDeleted}
+        />
         {deleted && hide()}
-        <table className={`table text-center table-responsive  ${classes.table}`}>
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Hall</th>
-              <th scope="col" className="d-none d-lg-block">Status</th>
-              <th scope="col">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reservations.map((reservation) => (
-              <tr key={reservation.id}>
-                <td>{reservation.reserve_date}</td>
-                <td>{reservation.hall.name}</td>
-                <td className="d-none d-lg-block">
-                  {reservation.status === 'Pending' ? <span className={`bg-warning text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>
-                    : reservation.status === 'Confirmed' ? <span className={`bg-success text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>
-                      : <span className={`bg-danger text-white fw-semibold rounded ${classes.status}`}>{reservation.status}</span>}
-                </td>
-                <td>
-                  <MyReservationsModal
-                    error={setError}
-                    setReservations={setReservation}
-                    reservation={reservation}
-                    alert={setDeleted}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );
