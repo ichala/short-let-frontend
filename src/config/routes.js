@@ -6,6 +6,8 @@ import ManageRequests from '../Pages/Admin/Requests/ManageRequests';
 import Login from '../Pages/Auth/Login';
 import Register from '../Pages/Auth/Register';
 import Hall from '../Pages/Hall';
+import HallDetails from '../Pages/Halls/HallDetails';
+import Halls from '../Pages/Halls/Halls';
 import Home from '../Pages/Home/Home';
 import Reservation from '../Pages/Reservation/Reservation';
 import MyReservations from '../Pages/Users/MyReservations';
@@ -38,6 +40,14 @@ const routesConfig = [
       {
         path: '/my-reservations',
         element: <MyReservations />,
+      },
+      {
+        path: '/halls',
+        element: <Halls />,
+      },
+      {
+        path: '/halls/:id',
+        element: <HallDetails />,
       },
     ],
   },

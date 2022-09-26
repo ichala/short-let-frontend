@@ -17,6 +17,13 @@ const menuItem = [
     end: true,
   },
   {
+    path: '/halls',
+    name: 'Halls',
+    icon: <FaBuilding />,
+    end: false,
+    protected: true,
+  },
+  {
     path: '/register',
     name: 'Register',
     icon: <FaUserAlt />,
