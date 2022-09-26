@@ -11,3 +11,8 @@
 .nav-pills .nav-link {
   border-radius: 0 !important;
 }
+
+.logout {
+  position: absolute;
+  bottom: 10px;
+}

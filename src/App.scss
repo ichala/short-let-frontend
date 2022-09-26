@@ -1,3 +1,17 @@
+
+$green:#97bf0f;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.btn-success {
+  color: #fff !important;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:active {
+  color: #fff !important;
+}
+
 :root {
   --main: #97bf0f;
   --secondary: white;

@@ -1,3 +1,4 @@
+import { FaPowerOff } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import menuItem from '../config/sidebar';
@@ -64,15 +65,16 @@ const Sidebar = () => {
             </li>
           ))}
           {user && (
-          <li className="nav-link text-decoration-none text-dark d-flex gap-3">
+          <li className="nav-link text-decoration-none text-dark d-flex gap-3 absolute">
             <button
               onClick={() => {
                 dispatch(Logout());
               }}
               type="button"
-              className="btn btn-danger"
+              className="btn logout btn-success d-flex align-items-center bg-"
             >
-              Logout
+              <FaPowerOff />
+              <span className="fw-bold ms-1">Logout</span>
             </button>
           </li>
           ) }
