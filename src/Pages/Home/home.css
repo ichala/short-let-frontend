@@ -1,0 +1,23 @@
+.home-image {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  opacity: 0.9;
+}
+
+.data {
+  position: absolute;
+  top: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .home-image {
+    height: 25vh;
+  }
+
+  .data {
+    position: relative;
+  }
+}
