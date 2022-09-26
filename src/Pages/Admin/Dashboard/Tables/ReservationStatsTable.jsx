@@ -4,7 +4,7 @@ import styles from '../dashboard.module.css';
 function ReservationStatsTable({ stats }) {
   return (
     <div className="col-12 col-md-8">
-      <div className="card text-center">
+      <div className="card h-100 text-center">
         <div className={`card-header text-white ${styles.card_bg}`}>
           <h5>Recent Reservations</h5>
         </div>
