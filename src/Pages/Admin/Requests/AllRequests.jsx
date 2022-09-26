@@ -1,10 +1,53 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
 import { allRequests } from '../../../Api/admins/requests/manageRequests';
 
 const AllRequests = () => {
   const [requests, setRequests] = useState(null);
   const [error, setError] = useState('');
+
+  const columns = [
+    {
+      name: 'Date',
+      selector: (row) => row.reserve_date,
+      sortable: (row) => row.reserve_date,
+    },
+    {
+      name: 'Name',
+      selector: (row) => row.user.first_name,
+      sortable: (row) => row.user.first_name,
+    },
+    {
+      name: 'Email',
+      selector: (row) => row.user.email,
+    },
+    {
+      name: 'Hall',
+      selector: (row) => row.hall.name,
+      sortable: (row) => row.hall.name,
+    },
+    {
+      name: 'Cost',
+      selector: (row) => row.hall.cost,
+      sortable: (row) => row.hall.cost,
+    },
+    {
+      name: 'Status',
+      button: true,
+      cell: (data) => (
+        <span className="d-none d-lg-block">
+          {data.status === 'Pending' ? (
+            <span className="bg-warning text-white fw-semibold rounded status">{data.status}</span>
+          ) : data.status === 'Confirmed' ? (
+            <span className="bg-success text-white fw-semibold rounded status">{data.status}</span>
+          ) : (
+            <span className="bg-danger text-white fw-semibold rounded status">{data.status}</span>
+          )}
+        </span>
+      ),
+    },
+  ];
 
   useEffect(() => {
     allRequests(setError, setRequests);
@@ -36,34 +79,7 @@ const AllRequests = () => {
       </div>
       <div className="row">
         <div className="col-12">
-          <table className="table table-responsive text-center table-condensed mt-4 mb-5">
-            <thead className="align-middle table-headeri active">
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Name</th>
-                <th className="d-none d-lg-block" scope="col">Email</th>
-                <th scope="col" className="d-none d-lg-table-cell">Hall</th>
-                <th scope="col" className="d-none d-lg-table-cell">Cost</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody className="align-middle bg-light">
-              {requests.map((request) => (
-                <tr key={request.id}>
-                  <td>{request.reserve_date}</td>
-                  <td className="d-none d-lg-block mt-3 pb-3">{request.user.email}</td>
-                  <td>{request.user.first_name}</td>
-                  <td className="d-none d-lg-table-cell">{request.hall.name}</td>
-                  <td className="d-none d-lg-table-cell">{request.hall.cost}</td>
-                  <td>
-                    {request.status === 'Pending' ? <span className="bg-warning text-white fw-semibold rounded status">{request.status}</span>
-                      : request.status === 'Confirmed' ? <span className="bg-success text-white fw-semibold rounded status">{request.status}</span>
-                        : <span className="bg-danger text-white fw-semibold rounded status">{request.status}</span>}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <DataTable columns={columns} data={requests} highlightOnHover pagination responsive />
         </div>
       </div>
     </div>
