@@ -30,6 +30,18 @@ const Sidebar = () => {
                 </NavLink>
               </li>
             ))}
+            <li className="nav-link text-decoration-none text-dark d-flex">
+              <button
+                onClick={() => {
+                  dispatch(Logout());
+                }}
+                type="button"
+                className="btn  btn-success d-flex align-items-center bg-"
+              >
+                <FaPowerOff />
+                <span className="fw-bold ms-1">Logout</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
