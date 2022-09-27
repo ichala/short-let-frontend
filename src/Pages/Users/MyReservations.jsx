@@ -58,14 +58,15 @@ const MyReservations = () => {
         {' '}
         Below you can find details about all your reservations
       </h4>
-      <div>
+      {deleted && hide()}
+      <div className="mt-3">
         <MyReservationsTable
           reservations={reservations}
           setError={setError}
           setReservation={setReservation}
           setDeleted={setDeleted}
         />
-        {deleted && hide()}
+
       </div>
     </div>
   );

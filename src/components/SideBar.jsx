@@ -30,6 +30,8 @@ const Sidebar = () => {
                 </NavLink>
               </li>
             ))}
+            {user
+            && (
             <li className="nav-link text-decoration-none text-dark d-flex">
               <button
                 onClick={() => {
@@ -42,6 +44,7 @@ const Sidebar = () => {
                 <span className="fw-bold ms-1">Logout</span>
               </button>
             </li>
+            )}
           </ul>
         </div>
       </div>
