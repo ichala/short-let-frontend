@@ -56,7 +56,7 @@ function HallsChart({ stats }) {
   };
   return (
     <div className="col-12 col-md-6">
-      <div className="card text-center">
+      <div className="card text-center h-100">
         <div className={`card-header text-white ${styles.card_bg}`}>
           <h5>Top Halls Stats</h5>
         </div>

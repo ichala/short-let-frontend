@@ -1,8 +1,9 @@
+import { FaPowerOff } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import menuItem from '../config/sidebar';
 import { Logout } from '../redux/slices/auth';
-import Styles from './sidebar.module.css';
+import './sidebar.css';
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
@@ -14,21 +15,36 @@ const Sidebar = () => {
           <ul className="nav nav-pills flex-column mb-auto">
 
             {menuItem.map((item, index) => (
-              <li key={index} className={`${((user && !item.protected) || ((!(user?.role === 'admin') && item.admin)) || (!user && item.protected)) && !(item.name === 'Home') && 'd-none'} nav-item  text-dark text-decoration-none`}>
+              <li key={index} className={`${((user && !item.protected) || ((!(user?.role === 'admin') && item.admin)) || (!user && item.protected)) && !(item.name === 'Home') && 'd-none'} nav-item text-dark text-decoration-none`}>
                 <NavLink
                   to={item.path}
                   className="nav-link text-decoration-none text-dark d-flex gap-3"
                   end={item.end}
                 >
-                  <div className={Styles.icon}>{item.icon}</div>
+                  <div className="icon">{item.icon}</div>
                   <div
-                    className={Styles.link_text}
+                    className="link_text"
                   >
                     {item.name}
                   </div>
                 </NavLink>
               </li>
             ))}
+            {user
+            && (
+            <li className="nav-link text-decoration-none text-dark d-flex">
+              <button
+                onClick={() => {
+                  dispatch(Logout());
+                }}
+                type="button"
+                className="btn  btn-success d-flex align-items-center bg-"
+              >
+                <FaPowerOff />
+                <span className="fw-bold ms-1">Logout</span>
+              </button>
+            </li>
+            )}
           </ul>
         </div>
       </div>
@@ -40,9 +56,9 @@ const Sidebar = () => {
         </div>
       </nav>
 
-      <div className="d-flex border-end flex-column flex-shrink-0 p-3 d-md-block d-none shadow-sm  rounded sidebar" style={{ width: '280px' }}>
-        <a href="sqs" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img src="/images/logo.png" className={Styles.logo} alt="logo" />
+      <div className="d-flex border-end flex-column flex-shrink-0 pt-3 d-md-block d-none shadow-sm sidebar" style={{ width: '280px' }}>
+        <a href="sqs" className="d-flex align-items-center mb-3 ps-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <img src="/images/logo.png" className="logo" alt="logo" />
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
@@ -54,9 +70,9 @@ const Sidebar = () => {
                 className="nav-link text-decoration-none text-dark d-flex gap-3"
                 end={item.end}
               >
-                <div className={Styles.icon}>{item.icon}</div>
+                <div className="icon">{item.icon}</div>
                 <div
-                  className={Styles.link_text}
+                  className="link_text"
                 >
                   {item.name}
                 </div>
@@ -64,15 +80,16 @@ const Sidebar = () => {
             </li>
           ))}
           {user && (
-          <li className="nav-link text-decoration-none text-dark d-flex gap-3">
+          <li className="nav-link text-decoration-none text-dark d-flex gap-3 absolute">
             <button
               onClick={() => {
                 dispatch(Logout());
               }}
               type="button"
-              className="btn btn-danger"
+              className="btn logout btn-success d-flex align-items-center bg-"
             >
-              Logout
+              <FaPowerOff />
+              <span className="fw-bold ms-1">Logout</span>
             </button>
           </li>
           ) }

@@ -36,6 +36,18 @@ function Login() {
         {error}
       </div>
       )}
+      <div className="row">
+        <div className="col-md-4">
+          <div className="alert alert-primary text-sm" role="alert">
+            <b className="m-2">User : </b>
+            user@user.com:user123
+            <br />
+            <b className="m-2">Admin : </b>
+            admin@admin.com:admin123
+          </div>
+        </div>
+      </div>
+
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           <div id="emailHelp" className="form-text">Email</div>

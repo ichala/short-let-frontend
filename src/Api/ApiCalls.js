@@ -1,5 +1,5 @@
 import axios from '../config/axios';
-import { isLoggedIn, Login } from '../redux/slices/auth';
+import { Login } from '../redux/slices/auth';
 
 export default async function UserLogin(data, dispatch, error, setLoading) {
   await axios
@@ -7,7 +7,7 @@ export default async function UserLogin(data, dispatch, error, setLoading) {
     .then((res) => {
       if (res.status === 200) {
         dispatch(Login(res.data));
-        dispatch(isLoggedIn());
+        window.location.reload();
       }
     })
     .catch((e) => {
@@ -27,8 +27,7 @@ export async function UserSignUp(data, dispatch, error, setLoading) {
     .then((res) => {
       if (res.status === 200) {
         dispatch(Login(res.data));
-        dispatch(isLoggedIn());
-        setLoading(false);
+        window.location.reload();
       }
     })
     .catch((e) => {
@@ -41,10 +40,12 @@ export async function UserSignUp(data, dispatch, error, setLoading) {
     });
 }
 
-export const fetchAuthorizedUser = async () => axios
-  .get('/authorized')
-  .then((response) => {
-    if (response.status === 200) return response;
-    return null;
-  })
-  .catch((e) => e);
+export async function fetchAuthorizedUser(setForm, error) {
+  axios
+    .get('/authorized').then((response) => {
+      setForm({ ...response.data, password: '', confirm_password: '' });
+    })
+    .catch((e) => {
+      error(e.response.data.error);
+    });
+}

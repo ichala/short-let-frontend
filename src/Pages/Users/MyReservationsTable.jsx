@@ -1,21 +1,20 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
 import DataTable from 'react-data-table-component';
-import styles from '../dashboard.module.css';
+import MyReservationsModal from './MyReservationsModal';
 
-function ReservationStatsTable({ stats }) {
+const MyReservationsTable = ({
+  reservations, setError, setReservation, setDeleted,
+}) => {
   const columns = [
     {
-      name: 'User',
-      selector: (row) => row.user_name,
+      name: 'Date',
+      selector: (row) => row.reserve_date,
+      sortable: (row) => row.reserve_date,
     },
     {
       name: 'Hall',
-      selector: (row) => row.hall_name,
-    },
-    {
-      name: 'Date',
-      selector: (row) => row.date,
+      selector: (row) => row.hall.name,
+      sortable: (row) => row.hall.name,
     },
     {
       name: 'Status',
@@ -32,20 +31,21 @@ function ReservationStatsTable({ stats }) {
         </span>
       ),
     },
+    {
+      name: 'Details',
+      button: true,
+      cell: (data) => (
+        <MyReservationsModal
+          error={setError}
+          setReservations={setReservation}
+          reservation={data}
+          alert={setDeleted}
+        />
+      ),
+    },
   ];
 
-  return (
-    <div className="col-12 col-md-8">
-      <div className="card h-100 text-center">
-        <div className={`card-header text-white ${styles.card_bg}`}>
-          <h5>Recent Reservations</h5>
-        </div>
-        <div className="card-body">
-          <DataTable columns={columns} data={stats} highlightOnHover pagination responsive />
-        </div>
-      </div>
-    </div>
-  );
-}
+  return <DataTable columns={columns} data={reservations} />;
+};
 
-export default ReservationStatsTable;
+export default MyReservationsTable;

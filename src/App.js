@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { isLoggedIn } from './redux/slices/auth';
-import './App.css';
+import './App.scss';
 import Layout from './Layouts/Layout';
 import routesConfig from './config/routes';
 

@@ -4,39 +4,19 @@ import { fetchAuthorizedUser } from '../../Api/ApiCalls';
 import updateProfile from '../../Api/profile/api';
 
 const Profile = () => {
-  const [form, setForm] = useState({
-    first_name: '',
-    last_name: '',
-    role: '',
-    email: '',
-    password: '',
-    confirm_password: '',
-  });
-
+  const [form, setForm] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
-    setIsLoading(true);
-    fetchAuthorizedUser()
-      .then((profile) => {
-        setForm(profile.data);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        error(e.response.data.error);
-        setIsLoading(false);
-      });
-
-    setForm({ ...form, password: '', confirm_password: '' });
+    fetchAuthorizedUser(setForm, setError);
   }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setError(null);
   };
-
   const submit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     if (form.password !== form.confirm_password) {
       setError('Make sure the password and password confirmation fields are the same.');
@@ -50,18 +30,37 @@ const Profile = () => {
             icon: 'info',
             confirmButtonText: 'Cool',
           });
+          setIsLoading(false);
+          setError(null);
         })
-        .catch(() => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Failed',
-            text: 'Something went wrong!',
-            confirmButtonText: 'Close',
-          });
+        .catch((e) => {
+          if (e.response.status === 501) {
+            setError('Email Exist, please choose another one');
+          } else {
+            setError('Server Error try again later');
+          }
+          setIsLoading(false);
         });
     }
   };
-
+  if (!form) {
+    return (
+      <>
+        {!error ? (
+          <div className="d-flex justify-content-center">
+            <div
+              className="spinner-grow text-lg text-center text-success"
+              role="status"
+            />
+          </div>
+        ) : (
+          <div className="alert alert-danger" role="alert">
+            {error}
+          </div>
+        )}
+      </>
+    );
+  }
   return (
     <>
       <div className="heading">

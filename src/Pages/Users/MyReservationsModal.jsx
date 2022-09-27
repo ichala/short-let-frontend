@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
-import classes from './MyReservationsModal.module.css';
 import Modal from '../../components/Modal';
 import GetReservationStats, { cancelReservation } from '../../Api/myReservations/MyReservationsAPI';
 
@@ -32,7 +31,7 @@ const MyReservationsModal = ((props) => {
       close={close}
       btnClass="btn btn-success btn-sm px-3"
     >
-      <div className={classes.popup}>
+      <div>
         <img src={image} className="card-img-top" alt={name} />
         <div className="card-body text-center">
           <h5 className="card-title fw-bold">{name}</h5>
@@ -68,7 +67,7 @@ const MyReservationsModal = ((props) => {
             </p>
           </div>
         </div>
-        <div className={classes.buttonDiv}>
+        <div>
           {status === 'Pending' ? (
             <button type="button" className="btn btn-danger m-2 btn-sm" onClick={() => { cancelThisReservation(reservation.id); alert(true); }} id={reservation.id}>Cancel Reservation</button>
           ) : <button disabled type="button" className="btn btn-danger m-2" style={{ marginRight: '10px' }} id={reservation.id}>Cancel Reservation</button>}
