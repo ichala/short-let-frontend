@@ -23,7 +23,7 @@ Here is the [Kanban Board](https://github.com/ichala/short-let-api/issues/16) we
 
 ## Live Demo
 
-[Look at the live demo](https://short-let-frontend-6ri7-p4o3nd9pb-ichala.vercel.app)
+[Look at the live demo](https://short-let-island.vercel.app)
 
 
 ## Getting Started
