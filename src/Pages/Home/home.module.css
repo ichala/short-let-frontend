@@ -1,11 +1,11 @@
 .container {
   position: absolute;
-  top: 10%;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 4em;
+  gap: 2em;
   margin-top: 5em;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .title {
-  margin-bottom: 8em;
+  margin-bottom: 4em;
 }
 
 .card_bg {
@@ -65,5 +65,16 @@
     top: -100px;
     left: 10px;
     font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .container {
+    gap: 5em;
+    margin-top: 5em;
+  }
+
+  .title {
+    margin-bottom: 8em;
   }
 }

@@ -6,7 +6,7 @@ function Features() {
     <>
       <div className={styles.container}>
         <div className={styles.title}>
-          <span className="text-bg-success rounded display-4 mb-5 text-white fw-semibold px-5 py-3">Find your dream place</span>
+          <span className="text-bg-success rounded display-4 mb-5 text-white fw-semibold px-5 py-3 mt-3">Find your dream place</span>
         </div>
         <div className={`${styles.featureContainer}`}>
           <div>
