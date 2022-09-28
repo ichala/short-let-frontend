@@ -1,16 +1,16 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store from '../redux/store';
-import Hall from '../Pages/Admin/Hall/index';
+import store from '../../redux/store';
+import Profile from '../../Pages/Users/Profile';
 
 describe('Login', () => {
   it('should render the login page', () => {
-    const app = renderer.create(
+    const app = render(
       <Provider store={store}>
         <Router>
-          <Hall />
+          <Profile />
         </Router>
       </Provider>,
     );
