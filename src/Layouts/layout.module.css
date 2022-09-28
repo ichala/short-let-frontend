@@ -1,0 +1,18 @@
+
+@media screen and (min-width: 768px) {
+  .main_container {
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+.main_container {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.main_content {
+  width: 100%;
+  overflow-y: scroll;
+}
