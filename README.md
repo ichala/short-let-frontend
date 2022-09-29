@@ -9,6 +9,8 @@ This project is the frontend application for the Short Let project. This project
 This application was built as a group project in less then 3 weeks.
 
 
+## Kanban board
+
 Here is the [Kanban Board](https://github.com/ichala/short-let-api/issues/16) we planed to work on at the begining of this project.
 
 ![](https://user-images.githubusercontent.com/89282221/190205252-fd7bdeee-a2f2-4bc2-add9-e8efe93b9d51.gif)
