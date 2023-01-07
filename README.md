@@ -34,7 +34,7 @@ Make sure you installed yarn package manager in your machine. Please follow the 
 To get a local copy and up and running follow these simple example steps.
 
 1. Open your favorite command line tool, and run the bellow commands.
-2. Run `git clone git@github.com:ichala/short-let-frontend.git`
+2. Run `git clone git@github.com:d2ndjim/short-let-frontend.git`
 3. Run `cd short-let-frontend`
 4. Run `yarn install`
 4. Run `yarn start`
