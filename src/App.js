@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useRoutes } from 'react-router-dom';
+import { isLoggedIn } from './redux/slices/auth';
+import './App.scss';
+import Layout from './Layouts/Layout';
+import routesConfig from './config/routes';
 
 function App() {
+  const dispatch = useDispatch();
+  const routes = useRoutes(routesConfig);
+  useEffect(() => {
+    dispatch(isLoggedIn());
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <Layout>
+        {routes}
+      </Layout>
+
+    </>
   );
 }
 

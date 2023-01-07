@@ -1,0 +1,20 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.671);
+}
+
+.image_hall {
+  height: 20rem;
+  width: 100%;
+}
+
+.bg_main {
+  background: var(--main);
+}
+
+.text_main {
+  color: var(--main);
+}
+
+.button {
+  background-color: #a3e635;
+}
