@@ -73,7 +73,7 @@ const Create = ({ setChanged }) => {
               onChange={handleChange}
               value={capacity}
               required
-              min={10}
+              min={1}
               max={10000}
             />
           </label>
