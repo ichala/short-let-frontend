@@ -4,14 +4,14 @@
 
 This project is the frontend application for the Short Let project. This project is consuming th backend api from the short let api project built using Ruby on Rails. In this applicatin the users can reserve halls for their wedding parties, conferrence events, etc. In this project you can also have an admin dashboard if you login through the admin user.
 
-> Here is a link to the [backend api application](https://github.com/ichala/short-let-api) repository.
+> Here is a link to the [backend api application](https://github.com/d2ndjim/short-let-api) repository.
 
 This application was built as a group project in less then 3 weeks.
 
 
 ## Kanban board
 
-Here is the [Kanban Board](https://github.com/ichala/short-let-api/issues/16) we planed to work on at the begining of this project.
+Here is the [Kanban Board](https://github.com/d2ndjim/short-let-api/issues/16) we planed to work on at the begining of this project.
 
 ![](https://user-images.githubusercontent.com/89282221/190205252-fd7bdeee-a2f2-4bc2-add9-e8efe93b9d51.gif)
 
@@ -25,7 +25,7 @@ Here is the [Kanban Board](https://github.com/ichala/short-let-api/issues/16) we
 
 ## Live Demo
 
-[Look at the live demo](https://short-let-island.vercel.app)
+[Look at the live demo](https://short-let-islands.vercel.app)
 
 
 ## Getting Started
